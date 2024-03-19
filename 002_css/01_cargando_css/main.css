@@ -1,0 +1,13 @@
+body {
+    background-color: #efefef;
+}
+
+/* id -> # */
+#parrafo {
+    color: #ff0000;
+}
+
+/* clase -> . */
+.etiqueta {
+    color: #00aa00;
+}
