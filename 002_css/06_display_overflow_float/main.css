@@ -1,0 +1,25 @@
+body {
+    background-color: #eee;
+}
+
+p {
+    display: block;
+}
+
+#invisible{
+    display: none;
+}
+
+#over {
+    width: 100px;
+    height: 100px;
+    overflow-x: scroll;
+}
+
+img {
+    float: left;
+}
+
+div p {
+    color: #f000;
+}
