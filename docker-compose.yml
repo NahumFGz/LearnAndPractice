@@ -1,0 +1,9 @@
+version: '1.0'
+
+services:
+  app:
+    build: ./003_javascript
+    image: js-practice:1
+    container_name: learn-and-practice-container
+    volumes:
+      - ./003_javascript/scripts:/app/scripts
