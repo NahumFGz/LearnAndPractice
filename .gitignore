@@ -1,0 +1,3 @@
+# Ignorar la carpeta 004_django/my_env
+*/my_env
+**/my_env
