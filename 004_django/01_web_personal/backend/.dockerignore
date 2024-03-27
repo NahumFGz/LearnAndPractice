@@ -1,2 +1,7 @@
 # Ignorar my_env
+my_env
 my_env/
+
+# Ignorar __pycache__
+__pycache__
+__pycache__/

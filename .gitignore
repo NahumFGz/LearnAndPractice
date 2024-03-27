@@ -1,3 +1,5 @@
-# Ignorar la carpeta 004_django/my_env
-*/my_env
-**/my_env
+# Ignorar carpetas my_env
+my_env
+
+# Ignorar carpetas __pycache__
+__pycache__
