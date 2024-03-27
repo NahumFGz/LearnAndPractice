@@ -3,10 +3,10 @@ version: '3'
 services:
   frontend:
     build: 
-      context: .
+      context: ./my-app
       dockerfile: dockerfile
     image: frontend:1
     volumes:
-      - .:/app
+      - ./my-app:/app
     ports:
       - 3000:3000
