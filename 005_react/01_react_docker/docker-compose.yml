@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  frontend:
+    build: 
+      context: .
+      dockerfile: dockerfile
+    image: frontend:1
+    volumes:
+      - .:/app
+    ports:
+      - 3000:3000
