@@ -1,6 +1,13 @@
 {% extends 'core/base.html' %}
+{% block background %}{% load static %}{% static 'core/img/portfolio-bg.jpg' %}{% endblock %}
+
 
 {% block title %}Portafolio{% endblock %}
+
+{% block headers %}
+    <h1>Portafolio</h1>
+    <span class="subheading">Currículo</span>
+{% endblock %}
 
 {% block content %}
 <h2>Portafolio</h2>

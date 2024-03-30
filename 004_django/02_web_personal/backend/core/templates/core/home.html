@@ -1,7 +1,11 @@
 {% extends "core/base.html" %}
 
-{% block content %}
-<h2>Portada</h2>
+{% block background %}{% load static %}{% static 'core/img/home-bg.jpg' %}{% endblock %}
 
-<p>Esta es la portada</p>
+{% block headers %}
+    <h1>Juan Pérez</h1>
+    <span class="subheading">Ingeniero Industrial</span>
+{% endblock %}
+
+{% block content %}
 {% endblock %}
