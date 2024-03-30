@@ -10,3 +10,7 @@ python3 manage.py createsuperuser
 
 # Documentación de migrations
 https://docs.djangoproject.com/en/4.0/topics/migrations/
+
+
+# Copiar a portapapeles
+pwd | pbcopy
