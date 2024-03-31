@@ -1,6 +1,7 @@
 django-admin startproject webpersonal .
 
 django-admin startapp "nombre_app"
+python manage.py startapp "nombreapp"
 
 python manage.py makemigrations "nombre app"
 
