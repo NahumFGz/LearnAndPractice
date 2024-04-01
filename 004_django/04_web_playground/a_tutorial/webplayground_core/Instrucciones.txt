@@ -1,0 +1,5 @@
+﻿Descomprime esta App en tu proyecto webplayground:
+
+· En Windows	C:\CursoDjango\webplayground
+· En Mac OS		/Users/tu_usuario/Documents/CursoDjango/webplayground
+· En Linux 		/home/tu_usuario/CursoDjango/webplayground
