@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'blog',
     'ckeditor',
     'core',
+    'contact',
     'pages',
     'social',
     'services',
@@ -145,3 +146,9 @@ MEDIA_ROOT = BASE_DIR / 'media'
 #         ]
 #     }
 # }
+
+# Email configuration
+EMAIL_HOST = 'sandbox.smtp.mailtrap.io'
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
+EMAIL_PORT = ''
