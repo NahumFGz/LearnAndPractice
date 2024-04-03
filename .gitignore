@@ -19,3 +19,6 @@ dist/
 
 # Ignorar carpetas __pycache__
 __pycache__
+
+# Ignorar todos los .DS_Store
+.DS_Store
