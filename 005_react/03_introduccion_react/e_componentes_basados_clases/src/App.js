@@ -4,7 +4,7 @@
 // y los metodos no.
 
 // ! Este ejemplo trae ERRORES
-// Para evitar el error de CONTEXTO, usar arrow functions
+// Para evitar el error de CONTEXTO, usar propiedades donde se le asignan arrow functions
 
 import { Component } from "react";
 
