@@ -4,7 +4,6 @@ import Layout from "./components/Layout";
 import Title from "./components/Title";
 import Navbar from "./components/Navbar";
 
-
 class App extends Component {
   state = {
     productos: [
@@ -12,16 +11,40 @@ class App extends Component {
       { name: "Arbejas", price: 2500, img: "/productos/arbejas.jpg" },
       { name: "Lechuga", price: 500, img: "/productos/lechuga.jpg" },
     ],
+    carro: [
+      // { name: "Tomate", price: 1500, img: "/productos/tomate.jpg", cantidad:1 },
+    ],
+  };
+
+  agregarAlCarro = (producto) => {
+    const { carro } = this.state
+    if(carro.find(x => x.name=== producto.name)){
+      const newCarro = carro.map( x => x.name === producto.name
+        ? ({
+          ...x,
+          cantidad:x.cantidad + 1
+        })
+        : x)
+        return this.setState( {carro: newCarro})
+    }
+
+    return this.setState({
+      carro: this.state.carro.concat({
+        ...producto,
+        cantidad: 1,
+      }),
+    });
   };
 
   render() {
+    console.log(this.state.carro);
     return (
       <div>
-        <Navbar />
+        <Navbar carro={this.state.carro}/>
         <Layout>
-          <Title/>
+          <Title />
           <Productos
-            agregarAlCarro={() => console.log("No hace nada")}
+            agregarAlCarro={this.agregarAlCarro}
             productos={this.state.productos}
           />
         </Layout>
