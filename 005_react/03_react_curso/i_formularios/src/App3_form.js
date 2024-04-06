@@ -1,3 +1,4 @@
+//! En esta alternativa los campos de input siempre deben tener un name UNICO
 function App() {
   
   const submit = (e) => {
