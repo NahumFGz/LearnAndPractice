@@ -5,16 +5,17 @@
 import { useState } from "react";
 
 function App() {
-  const [value, setValue] = useState({ normal: "por defecto", texto: "" });
+  const [value, setValue] = useState({ normal: "", texto: "" });
+
   const handleChange = (e) => {
     // ? Como hago para actualizar el objeto correspondiente
     console.log(e.target.name);
 
-    // !Opcion 2: Pasar una funcion que reciba el valor (se cambia el nombre para evitar conflicto)
-    setValue((state) => ({
-      ...state,
-      [e.target.name]:e.target.value
-    }));
+    // !Opcion 1: para no borrar campos cuando se modifique
+    setValue({ 
+    // * Si no pongo esto se borra cuando modifico otro campo, entonces se crea una copia cada que se modifica
+       ...value, 
+       [e.target.name]: e.target.value });
   };
   console.log(value);
   return (
