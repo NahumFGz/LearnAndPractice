@@ -9,7 +9,7 @@ class Task(models.Model):
     class Meta:
         verbose_name = 'proyecto'
         verbose_name_plural = 'proyectos'
-        ordering = ['proyecto']
+        ordering = ['title']
 
     def __str__(self) -> str:
         return self.title

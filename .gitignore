@@ -5,6 +5,9 @@ node_modules/
 # Ambientes Virtuales de Python
 my_env/
 my_env/*
+venv_*/
+z_venv_*/
+
 
 # Archivos de paquetes de Python
 *.egg-info/
