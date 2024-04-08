@@ -130,7 +130,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # !Listar los servidores que se van a conectar
 CORS_ALLOWED_ORIGINS = [
-    
+    "http://localhost:5173"
 ]
 
 # !Documentacion de django
