@@ -7,8 +7,8 @@ class Task(models.Model):
     done = models.BooleanField(default=False)
 
     class Meta:
-        verbose_name = 'proyecto'
-        verbose_name_plural = 'proyectos'
+        verbose_name = 'Tarea'
+        verbose_name_plural = 'Tareas'
         ordering = ['title']
 
     def __str__(self) -> str:
