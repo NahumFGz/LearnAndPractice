@@ -13,3 +13,8 @@ npm run dev
 
 # Dependencias importantes
 npm i react-router-dom react-hot-toast axios react-hook-form
+
+# Para instalar tailwind 
+https://tailwindcss.com/docs/guides/vite
+npm install -D tailwindcss postcss autoprefixer
+npx tailwindcss init -p
