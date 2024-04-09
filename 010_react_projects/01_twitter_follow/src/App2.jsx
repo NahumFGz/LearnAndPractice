@@ -19,6 +19,18 @@ export function App() {
                 <TwitterFollowCard isFollowing={false} userName={'nahumfgz'}>
                     Nahum Flores Gutierrez
                 </TwitterFollowCard>
+                
+                <TwitterFollowCard isFollowing userName={'jose_sinfrenos'}>
+                    Jose Carlos la Rosa
+                </TwitterFollowCard>
+
+                <TwitterFollowCard isFollowing>
+                    Valor por Defecto
+                </TwitterFollowCard>
+
+                <TwitterFollowCard {...otro}>
+                    Parametros Rest Operator
+                </TwitterFollowCard>
             </section>
         </>
         //</React.Fragment>
