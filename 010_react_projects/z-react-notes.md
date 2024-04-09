@@ -7,7 +7,7 @@ npm start
 npm install -S formik
 
 # Vite
-npm create vite
+npm create vite@latest
 npm install
 npm run dev
 
