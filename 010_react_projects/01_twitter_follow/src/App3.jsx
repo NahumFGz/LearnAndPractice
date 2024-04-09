@@ -3,6 +3,8 @@ import './App.css'
 import { TwitterFollowCard } from './TwitterFollowCard'
 
 export function App() {
+    // Se pueden pasar las props, funciones y elementos
+
     const [name, setName] = useState('x')
 
     const handleClick = () => {
@@ -11,16 +13,18 @@ export function App() {
 
     return (
         <>
+            {/* Comentarios */}
+
             <section className='App'>
-                <TwitterFollowCard userName={'midudev'}>
+                <TwitterFollowCard isFollowing userName={'midudev'}>
                     Miguel Ángel Durán
                 </TwitterFollowCard>
 
-                <TwitterFollowCard initialIsFollowing={false} userName={'nahumfgz'}>
+                <TwitterFollowCard isFollowing={false} userName={'nahumfgz'}>
                     Nahum Flores Gutierrez
                 </TwitterFollowCard>
 
-                <TwitterFollowCard initialIsFollowing={true} userName={name}>
+                <TwitterFollowCard isFollowing={false} userName={name}>
                     Nahum Flores Gutierrez
                 </TwitterFollowCard>
 
