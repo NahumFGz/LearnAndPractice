@@ -21,3 +21,9 @@ npx tailwindcss init -p
 
 # Configurar slint
 https://www.masrinastudio.com/post/eslint-formatting-vscode-guide/
+
+USER SETTINGS -> cmd + shift + p
+"editor.codeActionsOnSave": {
+        "source.fixAll.eslint": "explicit"
+    },
+    "eslint.alwaysShowStatus": true
