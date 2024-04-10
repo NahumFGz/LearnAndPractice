@@ -1,30 +1,30 @@
 import confetti from 'canvas-confetti'
 
-import { useState } from "react"
-import { Square } from "./components/Square"
-import { WinnerModal } from "./components/WinnerModal"
+import { useState } from 'react'
+import { Square } from './components/Square'
+import { WinnerModal } from './components/WinnerModal'
 
 import { TURNS } from './constants.js'
 import { checkWinnerFrom, checkEndGame } from './logic/board.js'
 
-function App() {
+function App () {
   //! No se pueden usar los hooks en bucles o condicionales xq internamente react tiene una copia que guarda el orden de ejecución, entonces, si se modifica en un bucle y es diferente al orden que tiene guardado react puede causar errores
 
   // * No se deben realizar las lectutas de carga del state por fuera, xq cada actualización hará una carga, lo que puede relentizar la aplicacion
   console.log('render')
   const [board, setBoard] = useState(() => {
     // * La inicialización de estados solo ocurre una vez
-    
+
     console.log('iniciar estado del board')
     const boardFromStorage = window.localStorage.getItem('board')
     if (boardFromStorage) return JSON.parse(boardFromStorage)
     return Array(9).fill(null)
   }
   )
-  const [turn, setTurn] = useState( () => {
+  const [turn, setTurn] = useState(() => {
     const turnFromStorage = window.localStorage.getItem('turn')
-    return turnFromStorage ?? TURNS.X //!Si es null o undefined toma TURNS.X
-  }) 
+    return turnFromStorage ?? TURNS.X //! Si es null o undefined toma TURNS.X
+  })
   const [winner, setWinner] = useState(null)
 
   const resetGame = () => {
@@ -53,23 +53,23 @@ function App() {
     window.localStorage.setItem('board', JSON.stringify(newBoard))
     window.localStorage.setItem('turn', newTurn)
 
-    //Revisar si hay ganador
+    // Revisar si hay ganador
     const newWinner = checkWinnerFrom(newBoard)
     if (newWinner) {
-      //Actualiza el estado de forma asincrona
+      // Actualiza el estado de forma asincrona
       setWinner(newWinner)
       confetti()
     } else if (checkEndGame(newBoard)) {
-      //TODO: Verificar si el juego acabó
+      // TODO: Verificar si el juego acabó
       setWinner(false)
     }
   }
 
   return (
-    <main className="board">
+    <main className='board'>
       <h1>Tic tac toe</h1>
       <button onClick={resetGame}>Reset game</button>
-      <section className="game">
+      <section className='game'>
         {
           board.map((_, index) => (
             <Square
@@ -84,7 +84,7 @@ function App() {
         }
       </section>
 
-      <section className="turn">
+      <section className='turn'>
         <Square isSelected={turn === TURNS.X}>
           {TURNS.X}
         </Square>

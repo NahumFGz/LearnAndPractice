@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState } from 'react'
 import confetti from 'canvas-confetti'
 
 const TURNS = { // Turnos
@@ -31,8 +31,7 @@ const WINNER_COMBOS = [
   [2, 4, 6]
 ]
 
-
-function App() {
+function App () {
   const [board, setBoard] = useState(Array(9).fill(null))
   const [turn, setTurn] = useState(TURNS.X)
   const [winner, setWinner] = useState(null)
@@ -74,23 +73,23 @@ function App() {
     const newTurn = turn === TURNS.X ? TURNS.O : TURNS.X
     setTurn(newTurn)
 
-    //Revisar si hay ganador
+    // Revisar si hay ganador
     const newWinner = checkWinner(newBoard)
     if (newWinner) {
-      //Actualiza el estado de forma asincrona
+      // Actualiza el estado de forma asincrona
       setWinner(newWinner)
       confetti()
-    } else if (checkEndGame(newBoard)){
-      //TODO: Verificar si el juego acabó
+    } else if (checkEndGame(newBoard)) {
+      // TODO: Verificar si el juego acabó
       setWinner(false)
     }
   }
 
   return (
-    <main className="board">
+    <main className='board'>
       <h1>Tic tac toe</h1>
       <button onClick={resetGame}>Reset game</button>
-      <section className="game">
+      <section className='game'>
         {
           board.map((_, index) => (
             <Square
@@ -105,7 +104,7 @@ function App() {
         }
       </section>
 
-      <section className="turn">
+      <section className='turn'>
         <Square isSelected={turn === TURNS.X}>
           {TURNS.X}
         </Square>
@@ -116,8 +115,8 @@ function App() {
 
       {
         winner !== null && (
-          <section className="winner">
-            <div className="text">
+          <section className='winner'>
+            <div className='text'>
               <h2>
                 {
                   winner === false
@@ -126,7 +125,7 @@ function App() {
                 }
               </h2>
 
-              <header className="win">
+              <header className='win'>
                 {winner && <Square>{winner}</Square>}
               </header>
 

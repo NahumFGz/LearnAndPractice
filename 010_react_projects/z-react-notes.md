@@ -18,3 +18,6 @@ npm i react-router-dom react-hot-toast axios react-hook-form
 https://tailwindcss.com/docs/guides/vite
 npm install -D tailwindcss postcss autoprefixer
 npx tailwindcss init -p
+
+# Configurar slint
+https://www.masrinastudio.com/post/eslint-formatting-vscode-guide/
