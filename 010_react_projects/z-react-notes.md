@@ -27,3 +27,28 @@ USER SETTINGS -> cmd + shift + p
         "source.fixAll.eslint": "explicit"
     },
     "eslint.alwaysShowStatus": true
+
+
+# Crear react desde vanilla
+npm install @vitejs/plugin-react -E
+npm install react react-dom -E
+
+<!-- * crear vite.config.js -->
+index.html
+modificar js por jsx para mejorar el transpilador
+
+<!-- * intalar standard JS  -->
+npm install standard -D
+
+<!-- * agregar el linter en packaje.json:  -->
+,
+  "eslintConfig": {
+    "extends": "./node_modules/standard/eslintrc.json"
+  }
+
+<!-- * Crear carpeta src -->
+dentro de src/App.jsx
+
+<!-- * Agregar app a main -->
+Agregar info en app
+agregar a main
