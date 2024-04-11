@@ -7,6 +7,8 @@ export function App () {
   const [fact, setFact] = useState()
   const [imageURL, setImageUrl] = useState()
 
+  // !BUENA PRACTICA -> Cada efecto solo debe tener una responsabilidad
+  // Efecto para recuperar las 3 palabras
   useEffect(() => {
     fetch(CAT_ENDPOINT_RANDOM_FACT)
       .then(res => res.json())
@@ -16,6 +18,7 @@ export function App () {
       })
   }, [])
 
+  // Efecto para generar la URL
   useEffect(() => {
     if (!fact) return
 
