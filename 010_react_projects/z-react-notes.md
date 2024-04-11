@@ -52,3 +52,6 @@ dentro de src/App.jsx
 <!-- * Agregar app a main -->
 Agregar info en app
 agregar a main
+
+# Notas:
+- En el estado debe existir lo minimo necesario
