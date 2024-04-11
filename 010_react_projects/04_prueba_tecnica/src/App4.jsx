@@ -7,26 +7,20 @@ export function App () {
   const [fact, setFact] = useState()
   const [imageURL, setImageUrl] = useState()
 
-  // !BUENA PRACTICA -> Cada efecto solo debe tener una responsabilidad
-  // Efecto para recuperar las 3 palabras
+  // No puedes usar axios, react query, solo usar lo básico.
   useEffect(() => {
     fetch(CAT_ENDPOINT_RANDOM_FACT)
       .then(res => res.json())
       .then(data => {
         const { fact } = data
         setFact(fact)
+
+        const threeFirstWords = fact.split(' ', 3).join(' ')
+        console.log('threeFirstWords', threeFirstWords)
+
+        setImageUrl(`https://cataas.com/cat/says/${threeFirstWords}?size=50&color=red`)
       })
   }, [])
-
-  // Efecto para generar la URL
-  useEffect(() => {
-    if (!fact) return
-
-    const threeFirstWords = fact.split(' ', 3).join(' ')
-    console.log('threeFirstWords', threeFirstWords)
-
-    setImageUrl(`https://cataas.com/cat/says/${threeFirstWords}?size=50&color=red`)
-  }, [fact])
 
   return (
     <main>
