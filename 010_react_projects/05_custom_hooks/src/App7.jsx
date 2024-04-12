@@ -1,6 +1,5 @@
 import { useCatFact } from './hooks/useCatHook'
 import { useCatImage } from './hooks/useCatImage'
-import { Otro } from './components/Otro'
 import './App.css'
 
 export function App () {
@@ -23,8 +22,6 @@ export function App () {
         {fact && <p>{fact}</p>}
         {imageURL && <img src={imageURL} alt={`Image extact using from ${fact}`} />}
       </section>
-
-      <Otro />
     </main>
   )
 }
