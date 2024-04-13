@@ -55,3 +55,9 @@ agregar a main
 
 # Notas:
 - En el estado debe existir lo minimo necesario
+
+# Testing
+npm init playwright@latest
+npx playwright test
+- cambiar extensió  a .config.cjs
+- cambiar require del test
