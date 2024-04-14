@@ -9,8 +9,9 @@ function App () {
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    const { query } = Object.fromEntries(new window.FormData(event.target))
-    console.log({ query })
+    const fields = new window.FormData(event.target)
+    const query = fields.get('query')
+    console.log(query)
   }
 
   return (

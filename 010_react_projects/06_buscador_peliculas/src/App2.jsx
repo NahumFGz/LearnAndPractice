@@ -1,16 +1,17 @@
-// !Para evitar abusar de useRef
-
 import './App.css'
 import { useMovies } from './hooks/useMovies'
 import { Movies } from './components/Movies'
+import { useRef } from 'react'
 
 function App () {
   const { movies } = useMovies()
+  const inputRef = useRef() // ABUSA DE ESTO
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    const { query } = Object.fromEntries(new window.FormData(event.target))
-    console.log({ query })
+    const inputEl = inputRef.current
+    const value = inputEl.value
+    console.log(value)
   }
 
   return (
@@ -18,7 +19,7 @@ function App () {
       <header>
         <h1>Buscador de peliculas</h1>
         <form className='form' onSubmit={handleSubmit}>
-          <input name='query' placeholder='Avengers, StarWars, The Matrix ....' />
+          <input ref={inputRef} placeholder='Avengers, StarWars, The Matrix ....' />
           <button type='submit'> Buscar </button>
         </form>
       </header>
