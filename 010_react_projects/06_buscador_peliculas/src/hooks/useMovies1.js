@@ -22,10 +22,20 @@ export function useMovies ({ search, sort }) {
       } catch (e) {
         setError(e.message)
       } finally {
+      //! Tanto si ocurre el TRY o CATCH
         setLoading(false)
       }
     }
     , [])
+
+  // const getSortedMovies = () => {
+  //   console.log('getSortedMovies')
+  //   const sortedMovies = sort
+  //     ? [...movies].sort((a, b) => a.title.localeCompare(b.title))
+  //     : movies
+
+  //   return sortedMovies
+  // }
 
   const sortedMovies = useMemo(() => {
     console.log('memoSortedMovies')
