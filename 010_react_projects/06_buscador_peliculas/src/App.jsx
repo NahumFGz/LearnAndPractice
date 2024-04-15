@@ -1,33 +1,7 @@
 import './App.css'
 import { useMovies } from './hooks/useMovies'
+import { useSearch } from './hooks/useSearch'
 import { Movies } from './components/Movies'
-import { useEffect, useState } from 'react'
-
-function useSearch () {
-  const [search, updateSearch] = useState('')
-  const [error, setError] = useState(null)
-
-  useEffect(() => {
-    if (search === '') {
-      setError('No se puede buscar una película vacía')
-      return
-    }
-
-    if (search.match(/^\d+$/)) {
-      setError('No se puede buscar una pelicula con un número')
-      return
-    }
-
-    if (search.length < 3) {
-      setError('La búsqueda debe tener al menos 3 caracters')
-      return
-    }
-
-    setError(null)
-  }, [search])
-
-  return { search, updateSearch, error }
-}
 
 function App () {
   const { movies } = useMovies()
