@@ -1,4 +1,4 @@
-// !FORMA CONTROLADA
+// !FORMA NO CONTROLADA
 
 import './App.css'
 import { useMovies } from './hooks/useMovies'
