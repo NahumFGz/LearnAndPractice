@@ -7,24 +7,26 @@ export function useMovies ({ search, sort }) {
   const [error, setError] = useState(null)
   const previousSearch = useRef(search)
 
-  const getMovies = async () => {
-    if (search === previousSearch.current) return
+  const getMovies = useMemo(() => {
+    return async ({ search }) => {
+      if (search === previousSearch.current) return
 
-    try {
-      setLoading(true)
-      setError(null)
+      try {
+        setLoading(true)
+        setError(null)
 
-      previousSearch.current = search
+        previousSearch.current = search
 
-      const newMovies = await searchMovies({ search })
-      setMovies(newMovies)
-    } catch (e) {
-      setError(e.message)
-    } finally {
+        const newMovies = await searchMovies({ search })
+        setMovies(newMovies)
+      } catch (e) {
+        setError(e.message)
+      } finally {
       //! Tanto si ocurre el TRY o CATCH
-      setLoading(false)
+        setLoading(false)
+      }
     }
-  }
+  }, [search])
 
   // const getSortedMovies = () => {
   //   console.log('getSortedMovies')
