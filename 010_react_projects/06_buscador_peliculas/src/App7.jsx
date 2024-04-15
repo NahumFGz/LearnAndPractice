@@ -1,3 +1,4 @@
+// !Validar de forma CONTROLADA
 import './App.css'
 import { useMovies } from './hooks/useMovies'
 import { Movies } from './components/Movies'
@@ -14,13 +15,11 @@ function App () {
   }
 
   const handleChange = (event) => {
-    const newQuery = event.target.value
-    if (newQuery.startsWith(' ')) return
-
-    setQuery(newQuery)
+    setQuery(event.target.value)
   }
 
   useEffect(() => {
+    //! Forma INCORRECTA DE VALIDAR -> Hay que asegurarse que estamos usando el nuevo estado
     if (query === '') {
       setError('No se puede buscar una película vacía')
       return
@@ -44,13 +43,7 @@ function App () {
       <header>
         <h1>Buscador de peliculas</h1>
         <form className='form' onSubmit={handleSubmit}>
-          <input
-            style={{
-              border: '1px solid transparent',
-              borderColor: error ? 'red' : 'transparent'
-            }}
-            onChange={handleChange} value={query} name='query' placeholder='Avengers, StarWars, The Matrix ....'
-          />
+          <input onChange={handleChange} value={query} name='query' placeholder='Avengers, StarWars, The Matrix ....' />
           <button type='submit'> Buscar </button>
         </form>
         {error && <p style={{ color: 'red' }}>{error}</p>}
