@@ -1,15 +1,47 @@
 import './App.css'
+import { useState, useEffect, useRef } from 'react'
 import { useMovies } from './hooks/useMovies'
-import { useSearch } from './hooks/useSearch'
 import { Movies } from './components/Movies'
 
+function useSearch () {
+  const [search, updateSearch] = useState('')
+  const [error, setError] = useState(null)
+  const isFirstInput = useRef(true)
+
+  useEffect(() => {
+    if (isFirstInput.current) {
+      isFirstInput.current = search === ''
+      return
+    }
+
+    if (search === '') {
+      setError('No se puede buscar una película vacía')
+      return
+    }
+
+    if (search.match(/^\d+$/)) {
+      setError('No se puede buscar una pelicula con un número')
+      return
+    }
+
+    if (search.length < 3) {
+      setError('La búsqueda debe tener al menos 3 caracters')
+      return
+    }
+
+    setError(null)
+  }, [search])
+
+  return { search, updateSearch, error }
+}
+
 function App () {
-  const { movies } = useMovies()
   const { search, updateSearch, error } = useSearch()
+  const { movies, getMovies, loading } = useMovies({ search })
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    console.log({ search })
+    getMovies()
   }
 
   const handleChange = (event) => {
@@ -34,6 +66,9 @@ function App () {
       </header>
 
       <main>
+        {
+          loading ? <p>Cargando ... </p> : null
+        }
         <Movies movies={movies} />
       </main>
     </div>
