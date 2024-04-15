@@ -61,3 +61,6 @@ npm init playwright@latest
 npx playwright test
 - cambiar extensió  a .config.cjs
 - cambiar require del test
+
+# Debounce
+npm install just-debounce-it -E 

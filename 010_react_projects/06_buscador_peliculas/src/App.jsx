@@ -1,7 +1,8 @@
 import './App.css'
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 import { useMovies } from './hooks/useMovies'
 import { Movies } from './components/Movies'
+import debounce from 'just-debounce-it'
 
 function useSearch () {
   const [search, updateSearch] = useState('')
@@ -41,6 +42,15 @@ function App () {
   const { search, updateSearch, error } = useSearch()
   const { movies, getMovies, loading } = useMovies({ search, sort })
 
+  console.log('En cada render se ejecuta esto')
+  const debouncedGetMovies = useCallback(
+    debounce(search => {
+      console.log('Search', search)
+      getMovies({ search })
+    }, 500)
+    , []
+  )
+
   const handleSubmit = (event) => {
     event.preventDefault()
     getMovies({ search })
@@ -53,7 +63,8 @@ function App () {
   const handleChange = (event) => {
     const newSearch = event.target.value
     updateSearch(newSearch)
-    getMovies({ search: newSearch })
+    // getMovies({ search: newSearch })
+    debouncedGetMovies(newSearch)
   }
 
   useEffect(() => {
