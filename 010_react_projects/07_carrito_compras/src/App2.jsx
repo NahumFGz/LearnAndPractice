@@ -7,7 +7,14 @@ import { IS_DEVELOPMENT } from './config'
 import { FiltersContext } from './context/filters'
 
 function useFilters () {
-  const { filters, setFilters } = useContext(FiltersContext)
+  // const [filters, setFilters] = useState({
+  //   category: 'all',
+  //   minPrice: 0
+  // })
+
+  const filters = useContext(FiltersContext)
+  console.log('filters', filters)
+  const setFilters = () => {}
 
   const filterProducts = (products) => {
     return products.filter(product => {
