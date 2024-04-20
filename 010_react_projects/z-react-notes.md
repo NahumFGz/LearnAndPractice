@@ -64,3 +64,14 @@ npx playwright test
 
 # Debounce
 npm install just-debounce-it -E 
+
+# Instalar tremor
+https://www.tremor.so/docs/getting-started/installation
+npm add @tremor/react -E
+npm install -D tailwindcss postcss autoprefixer
+
+"./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+
+    // Path to Tremor module
+    "./node_modules/@tremor/**/*.{js,ts,jsx,tsx}",
