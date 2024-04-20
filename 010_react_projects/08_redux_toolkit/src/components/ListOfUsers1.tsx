@@ -10,6 +10,32 @@ import {
   Title,
 } from "@tremor/react";
 
+const users: {
+  id: string;
+  name: string;
+  email: string;
+  github: string;
+}[] = [
+  {
+    id: "1",
+    name: "Yazman Rodriguez",
+    email: "yasmanito@gmail.com",
+    github: "leo",
+  },
+  {
+    id: "2",
+    name: "Jhon Doe",
+    email: "leo@gmail.com",
+    github: "leo",
+  },
+  {
+    id: "3",
+    name: "Haakon Dahlberg",
+    email: "haakom@gmail.com",
+    github: "leo",
+  },
+];
+
 export function ListOfUsers() {
   return (
     <Card>
