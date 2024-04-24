@@ -41,26 +41,21 @@ export default function App () {
               </div>
             </header>
 
-            <aside className='flex items-center ml-auto text-sm font-bold'>
-              {
-                isFollowing
-                  ? (
-                    <button
-                      className={`w-40 py-1 group/follow border border-white rounded-full bg-transparent 
-                                  hover:bg-opacity-10 hover:bg-red-500 hover:text-red-600 hover:border-red-600`}
-                    >
-                      <span className='block group-hover/follow:hidden'>Siguiendo</span>
-                      <span className='hidden group-hover/follow:block'>Dejar de seguir</span>
-                    </button>
-                    )
-                  : (
-                    <button
-                      className='w-20 py-1 border border-white rounded-full text-black bg-white hover:opacity-80'
-                    >
-                      <span>Seguir</span>
-                    </button>
-                    )
-              }
+            <aside className='flex items-center ml-auto'>
+              <button
+                className={`border border-white px-10 py-1 rounded-full text-sm font-bold relative duration-200 ease-all
+                  ${isFollowing ? 'bg-transparent hover:bg-opacity-10 hover:bg-red-500 hover:text-red-700 hover:border-red-900' : 'text-black bg-white hover:opacity-80'}`}
+              >
+                <span>
+                  {isFollowing ? 'Siguiendo' : 'Seguir'}
+                </span>
+                {isFollowing &&
+                (
+                  <span className='hidden'>
+                    Dejar de seguir
+                  </span>
+                )}
+              </button>
             </aside>
           </article>
         ))}
