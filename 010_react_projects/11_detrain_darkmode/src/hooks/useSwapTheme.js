@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-export default function useChangeTheme () {
+export default function useSwapTheme () {
   const [theme, setTheme] = useState(() => {
     if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
       return 'dark'
@@ -17,9 +17,9 @@ export default function useChangeTheme () {
     }
   }, [theme])
 
-  const handleChangeTheme = () => {
+  const handleSwapTheme = () => {
     setTheme(prevTheme => prevTheme === 'light' ? 'dark' : 'light')
   }
 
-  return { handleChangeTheme }
+  return { handleSwapTheme }
 }

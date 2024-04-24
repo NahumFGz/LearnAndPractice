@@ -1,7 +1,7 @@
-import useChangeTheme from './hooks/useChangeTheme'
+import useSwapTheme from './hooks/useSwapTheme'
 
 function App () {
-  const { handleChangeTheme } = useChangeTheme()
+  const { handleSwapTheme } = useSwapTheme()
 
   return (
     <div className='h-screen flex items-center justify-center dark:bg-neutral-900'>
@@ -9,7 +9,7 @@ function App () {
         className={`bg-slate-200 px-4 py-2 rounded 
                     hover:bg-slate-300 
                     dark:bg-slate-950 dark:text-white dark:hover:bg-slate-800`}
-        onClick={handleChangeTheme}
+        onClick={handleSwapTheme}
       >
         Change Theme
       </button>
