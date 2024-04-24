@@ -10,7 +10,7 @@ export default function TwitterFollowCard ({ name, userName = 'unknown', initial
   }
 
   return (
-    <article key={userName} className='flex gap-4'>
+    <article key={userName} className='flex gap-4 w-[380px]'>
       <header className='flex items-center gap-2'>
         <img
           className='w-12 h-12 rounded-full'
