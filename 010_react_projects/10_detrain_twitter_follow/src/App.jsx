@@ -46,11 +46,12 @@ export default function App () {
                 className={`border border-white px-10 py-1 rounded-full text-sm font-bold relative duration-200 ease-all
                   ${isFollowing ? 'bg-transparent hover:bg-opacity-10 hover:bg-red-500 hover:text-red-700 hover:border-red-900' : 'text-black bg-white hover:opacity-80'}`}
               >
-                <span className='hover:hidden'>
+                <span>
                   {isFollowing ? 'Siguiendo' : 'Seguir'}
                 </span>
-                {isFollowing && (
-                  <span>
+                {isFollowing &&
+                (
+                  <span className='hidden'>
                     Dejar de seguir
                   </span>
                 )}
