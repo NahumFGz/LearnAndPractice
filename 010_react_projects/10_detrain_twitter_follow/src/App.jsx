@@ -48,7 +48,7 @@ export default function App () {
                     <button
                       className={`w-40 py-1 group/follow border border-white rounded-full bg-transparent 
                                   hover:bg-opacity-10 hover:bg-red-500 hover:text-red-600 hover:border-red-600
-                                  transition ease-in-out delay-75`}
+                                  transition ease-in-out delay-50`}
                     >
                       <span className='block group-hover/follow:hidden'>Siguiendo</span>
                       <span className='hidden group-hover/follow:block'>Dejar de seguir</span>
