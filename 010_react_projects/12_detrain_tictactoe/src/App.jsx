@@ -74,6 +74,18 @@ function App () {
             </SquareTurn>
 
           </section>
+
+          {
+            winner !== null && (
+              <p className='text-center mt-5 text-xl'>
+                {
+                  winner
+                    ? `El ganador es ${winner}`
+                    : 'Empate'
+                }
+              </p>
+            )
+          }
         </article>
       </main>
     </>
