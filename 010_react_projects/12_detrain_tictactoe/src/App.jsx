@@ -2,14 +2,17 @@ import { useState } from 'react'
 import { SquareGame } from './components/SquareGame'
 import { TURNS } from './constansts/turns'
 import { SquareTurn } from './components/SquareTurn'
+import ResetButton from './components/ResetButton'
+import { checkWinnerFrom, checkEndGame } from './logic/board'
 
 function App () {
   const [board, setBoard] = useState(Array(9).fill(null))
   const [turn, setTurn] = useState(TURNS.X)
+  const [winner, setWinner] = useState(null)
 
   const updateBoard = (index) => {
     // Si la casilla ya está ocupada, no hacemos nada
-    if (board[index] !== null) return
+    if (board[index] !== null || winner) return winner ? console.log('Hay un ganador') : console.log('Casilla ocupada')
 
     // Actualizamos el tablero
     const newBoard = [...board]
@@ -18,6 +21,20 @@ function App () {
 
     // Cambiamos el turno
     setTurn(turn === TURNS.X ? TURNS.O : TURNS.X)
+
+    // Comprobamos si hay ganador
+    const newWinner = checkWinnerFrom(newBoard)
+    if (newWinner) {
+      setWinner(newWinner)
+    } else if (checkEndGame(newBoard)) {
+      setWinner(false)
+    }
+  }
+
+  const resetGame = () => {
+    setBoard(Array(9).fill(null))
+    setTurn(TURNS.X)
+    setWinner(null)
   }
 
   return (
@@ -26,13 +43,11 @@ function App () {
         <article>
           <h1 className='flex justify-center items-center text-4xl font-semibold mb-3'>Tic tac toe</h1>
           <div className='flex justify-center items-center'>
-            <button
-              className={`w-24 p-2 m-6 bg-transparent border border-gray-200 text-gray-200 text-sm
-                      rounded transition duration-200 font-bold cursor-pointer
-                      hover:bg-gray-200 hover:text-gray-800`}
+            <ResetButton
+              resetGame={resetGame}
             >
               Reset game
-            </button>
+            </ResetButton>
           </div>
 
           <section className='grid grid-cols-3 gap-2'>
@@ -50,6 +65,7 @@ function App () {
           </section>
 
           <section className='mt-5 flex items-center justify-center'>
+
             <SquareTurn isTurn={turn === TURNS.X}>
               {TURNS.X}
             </SquareTurn>
