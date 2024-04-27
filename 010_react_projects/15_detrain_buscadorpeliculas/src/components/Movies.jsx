@@ -1,10 +1,10 @@
 export function ListOfMovies ({ movies }) {
   return (
     movies.map((movie) => (
-      <div key={movie.imdbID} className='flex flex-col items-center'>
-        <img src={movie.Poster} alt={movie.Title} />
-        <h2 className='font-bold'>{movie.Title}</h2>
-        <p className='mt-2'>{movie.Year}</p>
+      <div key={movie.id} className='flex flex-col items-center'>
+        <img src={movie.poster} alt={movie.title} />
+        <h2 className='font-bold'>{movie.title}</h2>
+        <p className='mt-2'>{movie.year}</p>
       </div>
     ))
   )
