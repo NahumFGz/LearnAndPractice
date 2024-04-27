@@ -4,7 +4,7 @@ import { useMovies } from './hooks/useMovies'
 
 function App () {
   const { search, updateSearch, error } = useSearch()
-  const { movies, getMovies } = useMovies({ search })
+  const { movies, loading, getMovies } = useMovies({ search })
 
   const handleSubmit = (event) => {
     event.preventDefault()
@@ -55,6 +55,7 @@ function App () {
       </div>
 
       <main>
+        {loading && <p className='text-white'>Cargando...</p>}
         <div className='text-white grid grid-cols-3 gap-4 mt-10'>
           <Movies movies={movies} />
         </div>
