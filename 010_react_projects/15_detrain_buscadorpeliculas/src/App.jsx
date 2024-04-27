@@ -1,3 +1,4 @@
+import { Movies } from './components/Movies'
 import responseMovies from './mocks/with-results.json'
 
 function App () {
@@ -26,16 +27,8 @@ function App () {
       </div>
 
       <main>
-        <div className='text-white font-bold grid grid-cols-3 gap-4 mt-10'>
-          {
-              movies.map((movie) => (
-                <div key={movie.imdbID} className='flex flex-col items-center'>
-                  <img src={movie.Poster} alt={movie.Title} />
-                  <h2 className=''>{movie.Title}</h2>
-                  <p className=''>{movie.Year}</p>
-                </div>
-              ))
-          }
+        <div className='text-white grid grid-cols-3 gap-4 mt-10'>
+          <Movies movies={movies} />
         </div>
       </main>
 
