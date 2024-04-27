@@ -1,15 +1,21 @@
 const API_KEY = import.meta.env.VITE_IMDB_API_KEY
 
 export const searchMovies = async ({ search }) => {
-  const response = await fetch(`https://www.omdbapi.com/?apikey=${API_KEY}&s=${search}`)
-  const json = await response.json()
-  const movies = json.Search
+  if (search === '') return console.log('Buscador vacio')
 
-  console.log(movies)
-  return movies?.map((movie) => ({
-    id: movie.imdbID,
-    title: movie.Title,
-    year: movie.Year,
-    poster: movie.Poster
-  }))
+  try {
+    const response = await fetch(`https://www.omdbapi.com/?apikey=${API_KEY}&s=${search}`)
+    const json = await response.json()
+    const movies = json.Search
+
+    console.log(movies)
+    return movies?.map((movie) => ({
+      id: movie.imdbID,
+      title: movie.Title,
+      year: movie.Year,
+      poster: movie.Poster
+    }))
+  } catch (e) {
+    throw new Error('Error al buscar las peliculas')
+  }
 }

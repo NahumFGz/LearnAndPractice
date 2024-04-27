@@ -13,7 +13,7 @@ Requerimientos:
 
 ✅ Hacer el fetching de datos a la API
 
-- Que el formulario funcione
+✅ Que el formulario funcione
 
 Primera iteración:
 

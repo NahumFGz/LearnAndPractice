@@ -1,4 +1,4 @@
-export function ListOfMovies ({ movies }) {
+function ListOfMovies ({ movies }) {
   return (
     movies.map((movie) => (
       <div key={movie.id} className='flex flex-col items-center'>
@@ -10,7 +10,7 @@ export function ListOfMovies ({ movies }) {
   )
 }
 
-export function NoFoundMovies () {
+function NoFoundMovies () {
   return (
     <p>No se encontraron resultados</p>
   )
