@@ -1,40 +1,45 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Movies } from './components/Movies'
 import { useMovies } from './hooks/useMovies'
 
-function App () {
-  const { movies } = useMovies()
-  const [query, setQuery] = useState('')
+function useSearch () {
+  const [search, updateSearch] = useState('')
   const [error, setError] = useState(null)
 
-  const handleSubmit = (event) => {
-    event.preventDefault()
-    console.log('handleSubmit', { query })
-  }
-  const handleChange = (event) => {
-    // !Para asegurarse que se esta guardando el valor correcto
-    const newQuery = event.target.value
-    setQuery(newQuery)
-    console.log('handleChange', { newQuery })
-
-    // Validaciones de query
-    // !Se pasa aqui xq se entiende mejor que se hace la validacion al escribir
-    if (newQuery === '') {
+  useEffect(() => {
+    if (search === '') {
       setError('No se puede buscar una película vacía')
       return
     }
 
-    if (newQuery.length < 3) {
+    if (search.length < 3) {
       setError('La búsqueda debe tener al menos 3 caracteres')
       return
     }
 
-    if (newQuery.match(/^\d+$/)) {
+    if (search.match(/^\d+$/)) {
       setError('No se puede buscar una pelicula con un número')
       return
     }
 
     setError(null)
+  }, [search])
+
+  return { search, updateSearch, error }
+}
+
+function App () {
+  const { movies } = useMovies()
+  const { search, updateSearch, error } = useSearch()
+
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    console.log('handleSubmit', { search })
+  }
+  const handleChange = (event) => {
+    const newQuery = event.target.value
+    updateSearch(newQuery)
+    console.log('handleChange', { newQuery })
   }
 
   const handleSort = (event) => {
@@ -51,6 +56,7 @@ function App () {
         <form onSubmit={handleSubmit}>
           <input
             name='query'
+            value={search}
             className='w-92 h-10 px-4 text-lg rounded-lg'
             placeholder='Avengers, StarWars, The Matrix...'
             onChange={handleChange}
