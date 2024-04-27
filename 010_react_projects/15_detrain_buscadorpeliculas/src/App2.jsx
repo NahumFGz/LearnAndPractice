@@ -12,11 +12,8 @@ function App () {
     console.log('handleSubmit', { query })
   }
   const handleChange = (event) => {
-    const newQuery = event.target.value
-
-    if (newQuery.startsWith(' ')) return
-    setQuery(newQuery)
-    console.log('handleChange', { newQuery })
+    setQuery(event.target.value)
+    console.log('handleChange', { query })
   }
 
   const handleSort = (event) => {
@@ -24,6 +21,7 @@ function App () {
   }
 
   useEffect(() => {
+    // Validaciones de query
     if (query === '') {
       setError('No se puede buscar una película vacía')
       return

@@ -1,46 +1,14 @@
-import { useState, useEffect } from 'react'
 import { Movies } from './components/Movies'
 import { useMovies } from './hooks/useMovies'
 
 function App () {
   const { movies } = useMovies()
-  const [query, setQuery] = useState('')
-  const [error, setError] = useState(null)
 
+  const handleChange = (event) => {}
+  const handleSort = (event) => {}
   const handleSubmit = (event) => {
     event.preventDefault()
-    console.log('handleSubmit', { query })
   }
-  const handleChange = (event) => {
-    const newQuery = event.target.value
-
-    if (newQuery.startsWith(' ')) return
-    setQuery(newQuery)
-    console.log('handleChange', { newQuery })
-  }
-
-  const handleSort = (event) => {
-    console.log('handleSort', event.target.checked)
-  }
-
-  useEffect(() => {
-    if (query === '') {
-      setError('No se puede buscar una película vacía')
-      return
-    }
-
-    if (query.length < 3) {
-      setError('La búsqueda debe tener al menos 3 caracteres')
-      return
-    }
-
-    if (query.match(/^\d+$/)) {
-      setError('No se puede buscar una pelicula con un número')
-      return
-    }
-
-    setError(null)
-  }, [query])
 
   return (
     <>
@@ -71,7 +39,6 @@ function App () {
           > Buscar
           </button>
         </form>
-        {error && <p className='mt-4 text-red-500 text-sm'>{error}</p>}
       </div>
 
       <main>

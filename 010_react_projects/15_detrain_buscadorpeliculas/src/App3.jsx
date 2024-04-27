@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react'
 import { Movies } from './components/Movies'
 import { useMovies } from './hooks/useMovies'
 
@@ -12,35 +11,34 @@ function App () {
     console.log('handleSubmit', { query })
   }
   const handleChange = (event) => {
+    // !Para asegurarse que se esta guardando el valor correcto
     const newQuery = event.target.value
-
-    if (newQuery.startsWith(' ')) return
     setQuery(newQuery)
     console.log('handleChange', { newQuery })
-  }
 
-  const handleSort = (event) => {
-    console.log('handleSort', event.target.checked)
-  }
-
-  useEffect(() => {
-    if (query === '') {
+    // Validaciones de query
+    // !Se pasa aqui xq se entiende mejor que se hace la validacion al escribir
+    if (newQuery === '') {
       setError('No se puede buscar una película vacía')
       return
     }
 
-    if (query.length < 3) {
+    if (newQuery.length < 3) {
       setError('La búsqueda debe tener al menos 3 caracteres')
       return
     }
 
-    if (query.match(/^\d+$/)) {
+    if (newQuery.match(/^\d+$/)) {
       setError('No se puede buscar una pelicula con un número')
       return
     }
 
     setError(null)
-  }, [query])
+  }
+
+  const handleSort = (event) => {
+    console.log('handleSort', event.target.checked)
+  }
 
   return (
     <>
