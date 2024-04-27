@@ -1,27 +1,27 @@
-import { useState, useEffect } from 'react'
+import { useRef } from 'react'
 import { Movies } from './components/Movies'
-import { searchMovies } from './services/movies'
+import responseMovies from './mocks/with-results.json'
+
+const API_KEY = import.meta.env.VITE_IMDB_API_KEY
+
+const searchMovies = async ({ search }) => {
+  const response = await fetch(`https://www.omdbapi.com/?apikey=${API_KEY}&s=${search}`)
+  const json = await response.json()
+  const movies = json.Search
+
+  console.log(movies)
+  return movies
+}
 
 function App () {
-  const [search, setSearch] = useState('')
-  const [movies, setMovies] = useState([])
+  const movies = responseMovies.Search
+  const inputRef = useRef()
 
-  const handleSubmit = (event) => {
+  const handleClick = (event) => {
     event.preventDefault()
-    const fields = Object.fromEntries(new window.FormData(event.target))
-    const query = fields.query
-    console.log(query)
-    setSearch(query)
+    const search = inputRef.current.value
+    searchMovies({ search })
   }
-
-  useEffect(() => {
-    const fetchMovies = async () => {
-      const newMovies = await searchMovies({ search })
-      setMovies(newMovies)
-    }
-
-    fetchMovies()
-  }, [search])
 
   return (
     <>
@@ -30,23 +30,20 @@ function App () {
           Buscador de peliculas
         </h1>
 
-        <form onSubmit={handleSubmit}>
+        <form>
           <input
-            name='query'
             className='w-92 h-10 px-4 text-lg rounded-lg'
             placeholder='Avengers, StarWars, The Matrix...'
+            ref={inputRef}
           />
-          <input
-            name='check'
-            className='m-2'
-            type='checkbox'
-          />
+          <input className='m-2' type='checkbox' />
           <button
             className={`w-24 h-10 border text-white text-lg rounded-lg bg-slate-700 
                             hover:bg-slate-500
                             active:scale-95 transition duration-150 ease-in-out
                             `}
             type='submit'
+            onClick={handleClick}
           > Buscar
           </button>
         </form>
