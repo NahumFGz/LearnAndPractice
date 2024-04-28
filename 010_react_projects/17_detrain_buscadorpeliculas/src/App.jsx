@@ -10,7 +10,7 @@ function App () {
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    // if (searchError) return
+    if (searchError) return
     getMovies()
     console.log({ movies })
   }
@@ -18,6 +18,7 @@ function App () {
   const handleTypeSearch = (event) => {
     const newQuery = event.target.value
     updateSearch(newQuery)
+    console.log({ search })
   }
 
   const handleSort = (event) => {

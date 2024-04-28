@@ -8,6 +8,8 @@ export function useMovies ({ search, sort }) {
   const previousSearch = useRef('')
 
   const getMovies = async () => {
+    console.log('Buscando peliculas...')
+
     if (search === previousSearch.current) return console.log('Busqueda repetida')
 
     try {
