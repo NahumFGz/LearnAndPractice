@@ -4,12 +4,13 @@ import { useSearch } from './hooks/useSearch'
 
 function App () {
   const { search, updateSearch, searchError } = useSearch()
-  const { movies, getMovies } = useMovies({ search })
+  const { movies, getMovies, loading, errorMovies } = useMovies({ search })
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    if (searchError) return
+    // if (searchError) return
     getMovies()
+    console.log({ movies })
   }
 
   const handleTypeSearch = (event) => {
@@ -46,13 +47,15 @@ function App () {
 
           <button
             type='submit'
-            class={`rounded bg-white/10 px-2 py-1 text-sm font-semibold text-white shadow-sm hover:bg-white/20
+            className={`rounded bg-white/10 px-2 py-1 text-sm font-semibold text-white shadow-sm hover:bg-white/20
             active:scale-95 transition duration-150 ease-in-out`}
           >
             Buscar
           </button>
         </form>
         {searchError && <p className='mt-4 text-red-500 text-sm'>{searchError}</p>}
+        {loading && <p className='text-white'>Cargando...</p>}
+        {errorMovies && <p className='text-red-500'>{errorMovies}</p>}
       </div>
 
       <main className='bg-gray-800 p-4'>
