@@ -3,24 +3,23 @@ import { useMovies } from './hooks/useMovies'
 import { useSearch } from './hooks/useSearch'
 
 function App () {
-  const { search, setUpdateSearch, error } = useSearch()
+  const { search, updateSearch, searchError } = useSearch()
   const { movies, getMovies } = useMovies({ search })
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    console.log('handleSubmit', { search })
+    if (searchError) return
     getMovies()
   }
 
   const handleTypeSearch = (event) => {
     const newQuery = event.target.value
-    setUpdateSearch(newQuery)
-    console.log('handleTypeSearch', { newQuery })
+    updateSearch(newQuery)
   }
 
   const handleSort = (event) => {
     const isChecked = event.target.checked
-    console.log('handleSort', { isChecked })
+    console.log('isChecked', isChecked)
   }
 
   return (
@@ -50,10 +49,10 @@ function App () {
             class={`rounded bg-white/10 px-2 py-1 text-sm font-semibold text-white shadow-sm hover:bg-white/20
             active:scale-95 transition duration-150 ease-in-out`}
           >
-            Button text
+            Buscar
           </button>
         </form>
-        {error && <p className='mt-4 text-red-500 text-sm'>{error}</p>}
+        {searchError && <p className='mt-4 text-red-500 text-sm'>{searchError}</p>}
       </div>
 
       <main className='bg-gray-800 p-4'>

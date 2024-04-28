@@ -1,6 +1,6 @@
 import withResults from '../mocks/with-results.json'
 import withoutResults from '../mocks/no-results.json'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
 export function useMovies ({ search }) {
   const [responseMovies, setResponseMovies] = useState([])
@@ -20,8 +20,6 @@ export function useMovies ({ search }) {
       setResponseMovies(withoutResults)
     }
   }
-
-  useEffect(() => { console.log('dsadasda->', { search, movies }) }, [search])
 
   return { movies: mappedMovies, getMovies }
 }
