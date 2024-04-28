@@ -1,10 +1,12 @@
+import { useState } from 'react'
 import { Movies } from './components/Movies'
 import { useMovies } from './hooks/useMovies'
 import { useSearch } from './hooks/useSearch'
 
 function App () {
+  const [sort, setSort] = useState(false)
   const { search, updateSearch, searchError } = useSearch()
-  const { movies, getMovies, loading, errorMovies } = useMovies({ search })
+  const { movies, getMovies, loading, errorMovies } = useMovies({ search, sort })
 
   const handleSubmit = (event) => {
     event.preventDefault()
@@ -20,7 +22,7 @@ function App () {
 
   const handleSort = (event) => {
     const isChecked = event.target.checked
-    console.log('isChecked', isChecked)
+    setSort(isChecked)
   }
 
   return (
