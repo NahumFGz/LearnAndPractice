@@ -1,3 +1,4 @@
+import { Movies } from './components/Movies'
 import mockResults from './mocks/with-results.json'
 
 function App () {
@@ -29,15 +30,7 @@ function App () {
 
       <main className='bg-gray-800 p-4'>
         <div className='grid gird-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4'>
-          {
-            movies.map((movie) => (
-              <div key={movie.imdbID} className='bg-gray-700 p-4 rounded-lg shadow-lg m-2 flex flex-col items-center'>
-                <img src={movie.Poster} alt={movie.Title} className='w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg' />
-                <h2 className='text-white text-lg'>{movie.Title}</h2>
-                <p className='text-gray-400'>{movie.Year}</p>
-              </div>
-            ))
-          }
+          <Movies movies={movies} />
         </div>
       </main>
     </>
