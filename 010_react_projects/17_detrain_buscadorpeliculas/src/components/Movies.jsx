@@ -1,10 +1,10 @@
 function ListOfMovies ({ movies }) {
   return (
     movies.map((movie) => (
-      <div key={movie.imdbID} className='bg-gray-700 p-4 rounded-lg shadow-lg m-2 flex flex-col items-center'>
-        <img src={movie.Poster} alt={movie.Title} className='w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg' />
-        <h2 className='text-white text-lg'>{movie.Title}</h2>
-        <p className='text-gray-400'>{movie.Year}</p>
+      <div key={movie.id} className='bg-gray-700 p-4 rounded-lg shadow-lg m-2 flex flex-col items-center'>
+        <img src={movie.poster} alt={movie.title} className='w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg' />
+        <h2 className='text-white text-lg'>{movie.title}</h2>
+        <p className='text-gray-400'>{movie.year}</p>
       </div>
     ))
   )

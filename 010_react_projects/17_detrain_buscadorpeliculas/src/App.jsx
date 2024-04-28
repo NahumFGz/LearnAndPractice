@@ -1,20 +1,20 @@
-import { useState, useEffect } from 'react'
 import { Movies } from './components/Movies'
-import mockResults from './mocks/with-results.json'
+import { useMovies } from './hooks/useMovies'
+import { useSearch } from './hooks/useSearch'
 
 function App () {
-  const movies = mockResults?.Search
-  const [query, setQuery] = useState('')
-  const [error, setError] = useState(null)
+  const { search, setUpdateSearch, error } = useSearch()
+  const { movies, getMovies } = useMovies({ search })
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    console.log('handleSubmit', { query })
+    console.log('handleSubmit', { search })
+    getMovies()
   }
 
   const handleTypeSearch = (event) => {
     const newQuery = event.target.value
-    setQuery(newQuery)
+    setUpdateSearch(newQuery)
     console.log('handleTypeSearch', { newQuery })
   }
 
@@ -22,26 +22,6 @@ function App () {
     const isChecked = event.target.checked
     console.log('handleSort', { isChecked })
   }
-
-  useEffect(() => {
-    // Validaciones de query
-    if (query === '') {
-      setError('No se puede buscar una película vacía')
-      return
-    }
-
-    if (query.length < 3) {
-      setError('La búsqueda debe tener al menos 3 caracteres')
-      return
-    }
-
-    if (query.match(/^\d+$/)) {
-      setError('No se puede buscar una pelicula con un número')
-      return
-    }
-
-    setError(null)
-  }, [query])
 
   return (
     <>
@@ -54,6 +34,7 @@ function App () {
         >
           <input
             name='query'
+            value={search}
             className='flex-1 p-2'
             placeholder='Avengers, Star Wars, The Matrix...'
             onChange={handleTypeSearch}
