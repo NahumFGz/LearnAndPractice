@@ -1,5 +1,5 @@
 import { searchMovies } from '../services/movies'
-import { useRef, useState, useMemo } from 'react'
+import { useRef, useState } from 'react'
 
 export function useMovies ({ search, sort }) {
   const [movies, setMovies] = useState([])
@@ -24,13 +24,12 @@ export function useMovies ({ search, sort }) {
     }
   }
 
-  const getSortedMovies = () => {
-    const sortedMovies = sort
-      ? [...movies].sort((a, b) => a.title.localeCompare(b.title))
-      : movies
+  const sortedMovies = sort
+    ? [...movies].sort((a, b) => a.title.localeCompare(b.title))
+    : movies
 
-    return sortedMovies
-  }
+  // Cada vez que se actualiza el estado de sort, se ejecuta el hook useMovies
+  console.log('sortedMovies', sortedMovies)
 
-  return { movies: getSortedMovies(), getMovies, loading, error }
+  return { movies: sortedMovies, getMovies, loading, error }
 }
