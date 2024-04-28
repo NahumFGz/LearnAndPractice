@@ -1,5 +1,8 @@
 import { searchMovies } from '../services/movies'
-import { useRef, useState, useMemo } from 'react'
+import { useRef, useState, useMemo, useCallback } from 'react'
+
+// Cada vez que se renderiza App, se crea un nuevo objeto movies,
+// por lo que se vuelve a ejecutar el hook useMovies y se vuelven a crear las funciones y variables.
 
 export function useMovies ({ search, sort }) {
   const [movies, setMovies] = useState([])
@@ -7,7 +10,7 @@ export function useMovies ({ search, sort }) {
   const [error, setError] = useState(null)
   const previousSearch = useRef(search)
 
-  const getMovies = async () => {
+  const getMovies = useCallback(async () => {
     if (search === previousSearch.current) return
 
     try {
@@ -22,10 +25,8 @@ export function useMovies ({ search, sort }) {
     } finally {
       setLoading(false)
     }
-  }
+  })
 
-  // !Explicación de useMemo -> 1:43:00
-  // https://www.youtube.com/watch?v=GOEiMwDJ3lc
   const sortedMoviesMemo = useMemo(() => {
     console.log('sortedMoviesMemo')
 
