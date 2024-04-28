@@ -8,8 +8,6 @@ export function useMovies ({ search, sort }) {
   const previousSearch = useRef('')
 
   const getMovies = async () => {
-    console.log('Buscando peliculas...')
-
     if (search === previousSearch.current) return console.log('Busqueda repetida')
 
     try {
@@ -26,11 +24,12 @@ export function useMovies ({ search, sort }) {
     }
   }
 
-  const sortedMovies = () => {
-    return sort
-      ? [...movies].sort((a, b) => a.title.localeCompare(b.title))
-      : movies
-  }
+  const sortedMovies = sort
+    ? [...movies].sort((a, b) => a.title.localeCompare(b.title))
+    : movies
 
-  return { movies: sortedMovies(), getMovies, loading, errorMovies }
+  // Cada vez que se actualiza el estado de sort, se ejecuta el hook useMovies
+  console.log('Crear sorted movies', sortedMovies)
+
+  return { movies: sortedMovies, getMovies, loading, errorMovies }
 }
