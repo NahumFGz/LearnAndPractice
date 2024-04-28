@@ -1,5 +1,5 @@
 import { searchMovies } from '../services/movies'
-import { useRef, useState } from 'react'
+import { useCallback, useMemo, useRef, useState } from 'react'
 
 export function useMovies ({ search, sort }) {
   const [movies, setMovies] = useState([])
@@ -7,7 +7,7 @@ export function useMovies ({ search, sort }) {
   const [errorMovies, setErrorMovies] = useState(null)
   const previousSearch = useRef('')
 
-  const getMovies = async () => {
+  const getMovies = useCallback(async () => {
     if (search === previousSearch.current) return console.log('Busqueda repetida')
 
     try {
@@ -22,14 +22,13 @@ export function useMovies ({ search, sort }) {
     } finally {
       setLoading(false)
     }
-  }
+  })
 
-  const sortedMovies = sort
-    ? [...movies].sort((a, b) => a.title.localeCompare(b.title))
-    : movies
-
-  // Cada vez que se actualiza el estado de sort, se ejecuta el hook useMovies
-  console.log('Crear sorted movies', sortedMovies)
+  const sortedMovies = useMemo(() => {
+    return sort
+      ? [...movies].sort((a, b) => a.title.localeCompare(b.title))
+      : movies
+  }, [movies, sort])
 
   return { movies: sortedMovies, getMovies, loading, errorMovies }
 }
