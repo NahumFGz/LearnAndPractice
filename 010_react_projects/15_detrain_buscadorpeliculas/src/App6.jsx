@@ -1,20 +1,12 @@
 import { useSearch } from './hooks/useSearch'
 import { Movies } from './components/Movies'
 import { useMovies } from './hooks/useMovies'
-import { useCallback, useState } from 'react'
-import debounce from 'just-debounce-it'
+import { useState } from 'react'
 
 function App () {
   const [sort, setSort] = useState(false)
   const { search, updateSearch, error } = useSearch()
   const { movies, loading, getMovies } = useMovies({ search, sort })
-
-  const debouncedGetMovies = useCallback(
-    debounce((search) => {
-      console.log('debouncedGetMovies', { search })
-      getMovies({ search })
-    }, 500), []
-  )
 
   const handleSubmit = (event) => {
     event.preventDefault()
@@ -25,7 +17,6 @@ function App () {
     const newQuery = event.target.value
     updateSearch(newQuery)
     console.log('handleChange', { newQuery })
-    debouncedGetMovies(newQuery)
   }
 
   const handleSort = (event) => {

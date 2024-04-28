@@ -10,7 +10,7 @@ export function useMovies ({ search, sort }) {
   const [error, setError] = useState(null)
   const previousSearch = useRef(search)
 
-  const getMovies = useCallback(async () => {
+  const getMovies = useCallback(async ({ search }) => {
     if (search === previousSearch.current) return
 
     try {
