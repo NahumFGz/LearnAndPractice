@@ -1,7 +1,9 @@
+import { BaseLayout } from '../components/BaseLayout'
+
 export function HomePage () {
   return (
-    <div>
-      <h1 className='bg-[#242424]'>HomePage</h1>
-    </div>
+    <BaseLayout>
+      <h1 className='bg-[#242424] h-[1200px]'>HomePage</h1>
+    </BaseLayout>
   )
 }
