@@ -1,11 +1,10 @@
 import { BaseLayout } from '../components/BaseLayout'
+import Contact from '../components/Contact'
 
 export function ContactPage () {
   return (
     <BaseLayout>
-      <div>
-        <h1>ContactPage</h1>
-      </div>
+      <Contact />
     </BaseLayout>
   )
 }
