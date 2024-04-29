@@ -1,3 +1,4 @@
+import { ROUTES } from './config/routes'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { HomePage } from './pages/HomePage'
 import { AboutUsPage } from './pages/AboutUsPage'
@@ -11,14 +12,14 @@ function App () {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path='/' element={<Navigate to='/home' />} />
-        <Route path='/home' element={<HomePage />} />
-        <Route path='/about' element={<AboutUsPage />} />
-        <Route path='/services' element={<ServicesPage />} />
-        <Route path='/products' element={<ProductsPage />} />
-        <Route path='/contact' element={<ContactPage />} />
-        <Route path='/login' element={<LoginPage />} />
-        <Route path='*' element={<NotFoundPage />} />
+        <Route path={ROUTES.REDIRECT_HOME} element={<Navigate to={ROUTES.HOME} />} />
+        <Route path={ROUTES.HOME} element={<HomePage />} />
+        <Route path={ROUTES.ABOUT} element={<AboutUsPage />} />
+        <Route path={ROUTES.SERVICES} element={<ServicesPage />} />
+        <Route path={ROUTES.PRODUCTS} element={<ProductsPage />} />
+        <Route path={ROUTES.CONTACT} element={<ContactPage />} />
+        <Route path={ROUTES.LOGIN} element={<LoginPage />} />
+        <Route path={ROUTES.NOT_FOUND} element={<NotFoundPage />} />
       </Routes>
     </BrowserRouter>
   )
