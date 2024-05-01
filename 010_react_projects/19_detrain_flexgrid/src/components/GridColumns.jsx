@@ -1,14 +1,5 @@
-// import { FlexBasisWrap } from './components/FlexBasisWrap'
-// import { FlexGrowShrink } from './components/FlexGrowShrink'
-// import { FlexOrder } from './components/FlexOrder'
-// import { GridColumns } from './components/GridColumns'
-
-function App () {
+export function GridColumns () {
   return (
-  // <FlexBasisWrap />
-  // <FlexGrowShrink />
-  // <FlexOrder />
-    // <GridColumns />
     <div className='mt-40 mx-80 border py-10'>
       {/* //? grid columns */}
       <p>grid columns</p>
@@ -60,8 +51,5 @@ function App () {
       </div>
 
     </div>
-
   )
 }
-
-export default App
