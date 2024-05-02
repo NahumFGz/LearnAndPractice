@@ -20,7 +20,7 @@ export function Products ({ products }) {
           </div>
 
           <div>
-            <button className='bg-blue-500 p-3 rounded hover:bg-blue-700 hover:scale-95 active:scale-90 transition duration-200 ease-in-out'>
+            <button className='bg-blue-500 px-4 py-2 rounded hover:bg-blue-700 hover:scale-95 active:scale-90 transition duration-200 ease-in-out'>
               <AddToCartIcon />
             </button>
           </div>
