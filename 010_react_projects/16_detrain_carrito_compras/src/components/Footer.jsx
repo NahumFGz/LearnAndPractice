@@ -1,9 +1,20 @@
-export function Footer ({ filters }) {
+import { useCart } from '../hooks/useCart'
+import { useFilters } from '../hooks/useFilters'
+
+export function Footer () {
+  const { filters } = useFilters()
+  const { cart } = useCart()
+
   return (
     <footer className='fixed left-4 bottom-4 text-left bg-black bg-opacity-90 p-2 rounded-lg'>
-      {
-        JSON.stringify(filters)
-      }
+      <div className='flex flex-col gap-2'>
+        <div>
+          Filters: {JSON.stringify(filters)}
+        </div>
+        <div>
+          Products: {JSON.stringify(cart)}
+        </div>
+      </div>
       {/*
       <h4 className='text-white text-sm sm:text-base'>
         Prueba técnica de React ⚛️ － <span className='text-blue-500'>@midudev</span>

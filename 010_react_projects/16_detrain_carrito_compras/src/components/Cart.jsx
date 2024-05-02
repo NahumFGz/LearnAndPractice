@@ -38,7 +38,7 @@ export function Cart () {
               <img
                 src='https://cdn.dummyjson.com/product-images/1/thumbnail.jpg'
                 alt='Iphone'
-                className='w-56 aspect-video rounded-sm'
+                className='w-72 aspect-video rounded-sm'
               />
             </div>
 
