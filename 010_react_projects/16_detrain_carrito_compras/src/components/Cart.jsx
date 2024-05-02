@@ -2,10 +2,40 @@ import { useId, useState } from 'react'
 import { CartIcon, ClearCartIcon } from './Icons.jsx'
 import { useCart } from '../hooks/useCart.js'
 
+function CartItem ({ thumbnail, price, title, quantity, addToCart }) {
+  return (
+    <li className='mb-5 flex flex-col items-center gap-2'>
+      <div>
+        <img
+          src={thumbnail}
+          alt={title}
+          className='w-72 aspect-video rounded-sm'
+        />
+      </div>
+
+      <div>
+        <strong> {title} </strong> - ${price}
+      </div>
+
+      <div>
+        <small>
+          Qty: {quantity}
+        </small>
+        <button
+          className='ml-2 px-2 align-middle border-2 border-gray-500 rounded-sm'
+          onClick={addToCart}
+        >
+          +
+        </button>
+      </div>
+    </li>
+  )
+}
+
 export function Cart () {
   const cartCheckboxId = useId()
   const [isOpen, setIsOpen] = useState(false)
-  const { clearCart } = useCart()
+  const { cart, clearCart, addToCart } = useCart()
 
   const toggleCart = () => {
     setIsOpen(!isOpen)
@@ -35,29 +65,17 @@ export function Cart () {
                     fixed right-0 top-0 w-96 h-screen bg-black p-4`}
       >
         <ul className='mt-20 border-b border-gray-700 pb-4'>
-          <li className='mb-5 flex flex-col items-center gap-2'>
-            <div>
-              <img
-                src='https://cdn.dummyjson.com/product-images/1/thumbnail.jpg'
-                alt='Iphone'
-                className='w-72 aspect-video rounded-sm'
-              />
-            </div>
-
-            <div>
-              <strong> iPhone </strong> - $1499
-            </div>
-
-            <div>
-              <small>
-                Qty: 1
-              </small>
-              <button>
-                +
-              </button>
-            </div>
-          </li>
-
+          {
+            cart.map((product) => {
+              return (
+                <CartItem
+                  key={product.id}
+                  addToCart={() => addToCart(product)}
+                  {...product}
+                />
+              )
+            })
+          }
         </ul>
 
         <div className='flex flex-row justify-center'>
