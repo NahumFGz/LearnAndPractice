@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Meta: compra gafas inteligentes y de VR</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Alpine JS -->
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+
+<body class="bg-[#242424] text-white">
+
+  <div class='mt-40 mx-80 border py-10'>
+    {/* //? flex basis */}
+    <p>Flex basis</p>
+    <div class='flex flex-row gap-2'>
+      <div class='basis-1/2 border rounded p-2 w-24'>01</div>
+      <div class='basis-1/4 border rounded p-2 w-24'>02</div>
+      <div class='basis-1/4 border rounded p-2 w-24'>03</div>
+    </div>
+
+    {/* //? flex direction */}
+    <p class='mt-[20px]'>Flex direction row</p>
+    <div class='flex flex-row gap-2'>
+      <div class='border rounded p-2 w-24'>01</div>
+      <div class='border rounded p-2 w-24'>02</div>
+      <div class='border rounded p-2 w-24'>03</div>
+    </div>
+
+    <div class='flex flex-row-reverse gap-2'>
+      <div class='border rounded p-2 w-24'>01</div>
+      <div class='border rounded p-2 w-24'>02</div>
+      <div class='border rounded p-2 w-24'>03</div>
+    </div>
+
+    {/* //? flex direction column */}
+    <p class='my-[20px]'>Flex direction column</p>
+    <div class='flex flex-col gap-2'>
+      <div class='border rounded p-2 w-24'>01</div>
+      <div class='border rounded p-2 w-24'>02</div>
+      <div class='border rounded p-2 w-24'>03</div>
+    </div>
+
+    <div class='flex flex-col-reverse gap-2'>
+      <div class='border rounded p-2 w-24'>01</div>
+      <div class='border rounded p-2 w-24'>02</div>
+      <div class='border rounded p-2 w-24'>03</div>
+    </div>
+
+    {/* //? flex wrap */}
+    {/* Por defecto */}
+    <p class='my-[20px]'>Flex wrap</p>
+    <div class='flex flex-row flex-nowrap'>
+      <div class='border rounded p-2 w-24'>01</div>
+      <div class='border rounded p-2 w-24'>02</div>
+      <div class='border rounded p-2 w-24'>03</div>
+      <div class='border rounded p-2 w-24'>04</div>
+      <div class='border rounded p-2 w-24'>05</div>
+      <div class='border rounded p-2 w-24'>06</div>
+      <div class='border rounded p-2 w-24'>03</div>
+      <div class='border rounded p-2 w-24'>07</div>
+    </div>
+
+    <div class='mt-10 flex flex-row flex-wrap'>
+      <div class='border rounded p-2 w-24'>01</div>
+      <div class='border rounded p-2 w-24'>02</div>
+      <div class='border rounded p-2 w-24'>03</div>
+      <div class='border rounded p-2 w-24'>04</div>
+      <div class='border rounded p-2 w-24'>05</div>
+      <div class='border rounded p-2 w-24'>06</div>
+      <div class='border rounded p-2 w-24'>03</div>
+      <div class='border rounded p-2 w-24'>07</div>
+    </div>
+
+    <div class='mt-10 flex flex-row flex-wrap-reverse'>
+      <div class='border rounded p-2 w-24'>01</div>
+      <div class='border rounded p-2 w-24'>02</div>
+      <div class='border rounded p-2 w-24'>03</div>
+      <div class='border rounded p-2 w-24'>04</div>
+      <div class='border rounded p-2 w-24'>05</div>
+      <div class='border rounded p-2 w-24'>06</div>
+      <div class='border rounded p-2 w-24'>03</div>
+      <div class='border rounded p-2 w-24'>07</div>
+    </div>
+
+  </div>
+
+  
+</body>
+
+<div class="h-[100px]"></div>
+
+</html>

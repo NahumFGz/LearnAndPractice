@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Meta: compra gafas inteligentes y de VR</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Alpine JS -->
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+
+<body class="bg-[#242424] text-white">
+
+  <div class='mt-40 mx-80 border py-10'>
+    {/* //? flex initial, auto, none */}
+    <p class='mt-[20px]'>Flex initial - crece y se reduce hasta maximo su tamaño inicial</p>
+    <div class='flex flex-row gap-2'>
+      <div class='flex-none border rounded p-2 w-14'>01</div>
+      <div class='flex-initial border rounded p-2 w-64'>02</div>
+      <div class='flex-initial border rounded p-2 w-32'>03</div>
+    </div>
+
+    <p class='mt-[20px]'>Flex 1 - crece y se encoje sin importar su tamaño inicial</p>
+    <div class='flex flex-row gap-2'>
+      <div class='flex-none border rounded p-2 w-14'>01</div>
+      <div class='flex-1 border rounded p-2 w-24'>02</div>
+      <div class='flex-1 border rounded p-2 w-32'>03</div>
+    </div>
+
+    <p class='mt-[20px]'>Flex auto - crezca y se encoja, teniendo en cuenta su tamaño inicial</p>
+    <div class='flex flex-row gap-2'>
+      <div class='flex-none border rounded p-2 w-14'>01</div>
+      <div class='flex-auto border rounded p-2 w-64'>02</div>
+      <div class='flex-auto border rounded p-2 w-32'>03</div>
+    </div>
+
+    <p class='mt-[20px]'>Flex none - para evitar que un elemento flexible crezca o se encoja</p>
+    <div class='flex flex-row gap-2'>
+      <div class='flex-none border rounded p-2 w-14'>01</div>
+      <div class='flex-none border rounded p-2 w-64'>02</div>
+      <div class='flex-auto border rounded p-2 w-32'>03</div>
+    </div>
+
+    {/* //? flex grow */}
+    <p class='mt-[70px]'>Grow</p>
+    <div class='flex flex-row gap-2'>
+      <div class='flex-none border rounded p-2 w-14'>01</div>
+      <div class='grow border rounded p-2 w-14'>02</div>
+      <div class='flex-none border rounded p-2 w-14'>03</div>
+    </div>
+
+    <p class='mt-[20px]'>Don't Grow  --- grow-0</p>
+    <div class='flex flex-row gap-2'>
+      <div class='grow border rounded p-2 w-14'>01</div>
+      <div class='grow-0 border rounded p-2 w-14'>02</div>
+      <div class='grow border rounded p-2 w-14'>03</div>
+    </div>
+
+    {/* //? flex shrink */}
+    <p class='mt-[70px]'>Shrink</p>
+    <div class='flex flex-row gap-2'>
+      <div class='flex-none border rounded p-2 w-14'>01</div>
+      <div class='shrink border rounded p-2 w-64'>02</div>
+      <div class='flex-none border rounded p-2 w-14'>03</div>
+    </div>
+
+    <p class='mt-[20px]'>Don't Shrink --- shrink-0</p>
+    <div class='flex flex-row gap-2'>
+      <div class='flex-1 border rounded p-2 w-14'>01</div>
+      <div class='shrink-0 border rounded p-2 w-14'>02</div>
+      <div class='flex-1 border rounded p-2 w-14'>03</div>
+    </div>
+
+  </div>
+
+  
+</body>
+
+<div class="h-[100px]"></div>
+
+</html>

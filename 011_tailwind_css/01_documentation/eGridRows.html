@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Meta: compra gafas inteligentes y de VR</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Alpine JS -->
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+
+<body class="bg-[#242424] text-white">
+
+  <div class='mt-40 mx-80 border py-10'>
+    {/* //? grid rows */}
+    <p>grid rows (Importante usar grid-flow-col)</p>
+    <div class='grid grid-rows-4 grid-flow-col gap-4'>
+      <div class='border rounded p-2'>01</div>
+      <div class='border rounded p-2'>02</div>
+      <div class='border rounded p-2'>03</div>
+      <div class='border rounded p-2'>04</div>
+      <div class='border rounded p-2'>05</div>
+      <div class='border rounded p-2'>06</div>
+      <div class='border rounded p-2'>07</div>
+      <div class='border rounded p-2'>08</div>
+      <div class='border rounded p-2'>09</div>
+    </div>
+
+    {/* //? subgrid */}
+    <p class='mt-[30px]'>subgrid</p>
+    <div class='grid grid-rows-4 grid-flow-col gap-4'>
+      <div class='border rounded p-2'>01</div>
+      <div class='border rounded p-2'>02</div>
+      <div class='border rounded p-2'>03</div>
+      <div class='border rounded p-2'>04</div>
+      <div class='border rounded p-2'>05</div>
+      <div class='grid grid-rows-subgrid gap-4 row-span-3'>
+        <div class='row-start-2 border rounded p-2'>06</div>
+      </div>
+      <div class='border rounded p-2'>07</div>
+      <div class='border rounded p-2'>08</div>
+      <div class='border rounded p-2'>09</div>
+      <div class='border rounded p-2'>10</div>
+    </div>
+
+  </div>
+
+  
+</body>
+
+<div class="h-[100px]"></div>
+
+</html>
