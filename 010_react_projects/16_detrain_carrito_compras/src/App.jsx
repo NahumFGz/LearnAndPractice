@@ -24,7 +24,7 @@ function App () {
 
   return (
     <div className='text-white'>
-      <Header />
+      <Header changeFilters={setFilters} />
       <Products products={filteredProducts} />
     </div>
   )
