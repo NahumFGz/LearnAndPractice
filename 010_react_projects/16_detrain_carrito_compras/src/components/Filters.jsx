@@ -1,7 +1,9 @@
-import { useState } from 'react'
+import { useState, useId } from 'react'
 
 export function Filters ({ onChange }) {
   const [minPrice, setMinPrice] = useState(0)
+  const minPriceFieldId = useId()
+  const cateforyFieldId = useId()
 
   const handleChangeMinPrice = (event) => {
     setMinPrice(event.target.value)
@@ -21,10 +23,10 @@ export function Filters ({ onChange }) {
   return (
     <section className='flex flex-col gap-2'>
       <div className='flex flex-row gap-2'>
-        <label htmlFor='price'> MinPrice </label>
+        <label htmlFor={minPriceFieldId}> MinPrice </label>
         <input
           type='range'
-          id='price'
+          id={minPriceFieldId}
           min='0'
           max='1000'
           value={minPrice}
@@ -34,10 +36,10 @@ export function Filters ({ onChange }) {
       </div>
 
       <div className='flex items-center justify-center'>
-        <label htmlFor='category'> </label>
+        <label htmlFor={cateforyFieldId}> </label>
         <select
           className='bg-slate-700 border p-1 rounded'
-          id='category'
+          id={cateforyFieldId}
           onChange={handleChangeCategory}
         >
           <option value='all'> All </option>
