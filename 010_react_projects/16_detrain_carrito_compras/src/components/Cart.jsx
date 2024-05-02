@@ -1,9 +1,11 @@
 import { useId, useState } from 'react'
 import { CartIcon, ClearCartIcon } from './Icons.jsx'
+import { useCart } from '../hooks/useCart.js'
 
 export function Cart () {
   const cartCheckboxId = useId()
   const [isOpen, setIsOpen] = useState(false)
+  const { clearCart } = useCart()
 
   const toggleCart = () => {
     setIsOpen(!isOpen)
@@ -59,7 +61,10 @@ export function Cart () {
         </ul>
 
         <div className='flex flex-row justify-center'>
-          <button className='mt-2 rounded-sm px-4 py-2 bg-gray-500 hover:scale-95 active:scale-90'>
+          <button
+            className='mt-2 rounded-sm px-4 py-2 bg-gray-500 hover:scale-95 active:scale-90'
+            onClick={clearCart}
+          >
             <ClearCartIcon />
           </button>
         </div>

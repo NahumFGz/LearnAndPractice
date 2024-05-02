@@ -2,7 +2,7 @@ import { AddToCartIcon, RemoveFromCartIcon } from './Icons'
 import { useCart } from '../hooks/useCart'
 
 export function Products ({ products }) {
-  const { addToCart, cart } = useCart()
+  const { addToCart, removeFromCart, cart } = useCart()
 
   const checkProductInCart = product => {
     return cart.some(item => item.id === product.id)
@@ -33,7 +33,11 @@ export function Products ({ products }) {
               <button
                 className={`${isProductInCart ? 'bg-red-500 hover:bg-red-700' : 'bg-blue-500 hover:bg-blue-700'}
                             ' px-4 py-2 rounded hover:scale-95 active:scale-90 transition duration-200 ease-in-out`}
-                onClick={() => addToCart(product)}
+                onClick={() => {
+                  isProductInCart
+                    ? removeFromCart(product)
+                    : addToCart(product)
+                }}
               >
                 {
                   isProductInCart
