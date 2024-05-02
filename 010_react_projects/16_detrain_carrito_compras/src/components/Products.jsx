@@ -2,7 +2,7 @@ import { AddToCartIcon } from './Icons'
 
 export function Products ({ products }) {
   return (
-    <main className='grid grid-cols-2 gap-10 m-20 md:grid-cols-3'>
+    <main className='grid grid-cols-2 gap-10 mx-20 md:grid-cols-3'>
       {products.map(product => (
         <div
           className='flex flex-col items-center justify-center p-4 bg-black rounded-lg gap-3'
@@ -14,8 +14,9 @@ export function Products ({ products }) {
             alt={product.title}
           />
 
-          <div>
-            <strong>{product.title}</strong> - ${product.price}
+          <div className='flex flex-row gap-2'>
+            <strong>{product.title}</strong> -
+            <span className='text-gray-500'>${product.price}</span>
           </div>
 
           <div>
