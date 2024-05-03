@@ -27,14 +27,14 @@ function App () {
               key={task.id}
             >
               <div className='flex flex-col items-center justify-between'>
-                <div>
-                  <h1 className='w-24'>{task.title}</h1>
-                </div>
-                <div className=''>
-                  <input type='checkbox' checked={task.done} />
-                </div>
+                <h1 className='w-24'>{task.title}</h1>
               </div>
-              <p>{task.description}</p>
+              <div className=''>
+                <input type='checkbox' checked={task.done} />
+              </div>
+              <div>
+                <p>{task.description}</p>
+              </div>
             </div>
           ))
         }
