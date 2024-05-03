@@ -22,10 +22,19 @@ function App () {
       <div>
         {
           tasks.map(task => (
-            <div key={task.id}>
-              <h1>{task.title}</h1>
+            <div
+              className='bg-gray-200 p-4 m-4 rounded-md flex flex-row items-center justify-between gap-4'
+              key={task.id}
+            >
+              <div className='flex flex-col items-center justify-between'>
+                <div>
+                  <h1 className='w-24'>{task.title}</h1>
+                </div>
+                <div className=''>
+                  <input type='checkbox' checked={task.done} />
+                </div>
+              </div>
               <p>{task.description}</p>
-              <input type='checkbox' checked={task.done} />
             </div>
           ))
         }
