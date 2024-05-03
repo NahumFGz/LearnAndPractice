@@ -14,43 +14,44 @@ export const updateLocalStorage = (state) => {
 export const cartReducer = (state, action) => {
   const { type: actionType, payload: actionPayload } = action
 
-  let newState
-
   switch (actionType) {
     case CART_ACTIONS_TYPES.ADD_TO_CART: {
       const { id } = actionPayload
       const productCartIndex = state.findIndex(item => item.id === id)
 
       if (productCartIndex >= 0) {
-        newState = structuredClone(state)
+        const newState = structuredClone(state)
         newState[productCartIndex].quantity++
-      } else {
-        newState = [
-          ...state,
-          {
-            ...actionPayload,
-            quantity: 1
-          }
-        ]
+        updateLocalStorage(newState)
+        return newState
       }
-      break
+
+      const newState = [
+        ...state,
+        {
+          ...actionPayload,
+          quantity: 1
+        }
+      ]
+      updateLocalStorage(newState)
+
+      return newState
     }
 
     case CART_ACTIONS_TYPES.REMOVE_FROM_CART:{
-      newState = state.filter(item => item.id !== actionPayload.id)
-      break
+      const newState = state.filter(item => item.id !== actionPayload.id)
+      updateLocalStorage(newState)
+
+      return newState
     }
 
     case CART_ACTIONS_TYPES.CLEAR_CART: {
-      newState = cartInitialState
-      break
-    }
+      const newState = cartInitialState
+      updateLocalStorage(newState)
 
-    default:
-      newState = state
-      break
+      return newState
+    }
   }
 
-  updateLocalStorage(newState)
-  return newState
+  return state
 }
