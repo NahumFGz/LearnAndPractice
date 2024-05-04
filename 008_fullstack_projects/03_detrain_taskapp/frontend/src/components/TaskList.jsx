@@ -1,21 +1,9 @@
-import { useState, useEffect } from 'react'
-import { getAllTasks } from '../api/tasks.axios'
+import { useGetTasks } from '../hooks/useGetTasks'
 import { TaskCart } from './TaskCard'
 
 export function TaskList () {
-  const [tasks, setTasks] = useState([])
-  console.log(tasks)
+  const { tasks } = useGetTasks()
 
-  useEffect(() => {
-    async function loadTasks () {
-      const response = await getAllTasks()
-      const { data } = response
-
-      setTasks(data)
-    }
-
-    loadTasks()
-  }, [])
   return (
     <div className='flex flex-col gap-4 m-4'>
       {
