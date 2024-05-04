@@ -1,7 +1,7 @@
 export function TaskCart ({ task }) {
   return (
     <div
-      className={`bg-gray-200 p-4 rounded-md flex flex-row items-center justify-between gap-4
+      className={`bg-gray-200 p-4 rounded-md flex flex-row items-center justify-start gap-4
                     hover:bg-blue-200 transition-colors duration-300 cursor-pointer
                   `}
     >

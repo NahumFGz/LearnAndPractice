@@ -1,10 +1,12 @@
 import { useForm } from 'react-hook-form'
+import { createTask } from '../api/tasks.axios'
 
 export function TasksFormPage () {
   const { register, handleSubmit, formState: { errors } } = useForm()
 
-  const handleFormSubmit = handleSubmit(data => {
-    console.log(data)
+  const handleFormSubmit = handleSubmit(async data => {
+    const res = await createTask(data)
+    console.log(res)
   })
 
   return (
