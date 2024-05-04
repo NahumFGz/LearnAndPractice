@@ -1,8 +1,18 @@
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+import { Header } from './components/Header'
+import { TasksPages } from './pages/TasksPages'
+import { TasksFormPage } from './pages/TasksFormPage'
+
 function App () {
   return (
-    <>
-      <h1>Task App V3</h1>
-    </>
+    <BrowserRouter>
+      <Header />
+      <Routes>
+        <Route path='/' element={<Navigate to='/tasks' />} />
+        <Route path='/tasks' element={<TasksPages />} />
+        <Route path='/tasks-create' element={<TasksFormPage />} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 
