@@ -1,12 +1,15 @@
 import { useForm } from 'react-hook-form'
 import { createTask } from '../api/tasks'
+import { useNavigate } from 'react-router-dom'
 
 export function FormInsertTask () {
   const { register, handleSubmit, formState: { errors } } = useForm()
+  const navigate = useNavigate()
 
   const handleFormSubmit = handleSubmit(async (data) => {
     await createTask(data)
     console.log('Task created')
+    navigate('/tasks')
   })
 
   return (
@@ -27,9 +30,11 @@ export function FormInsertTask () {
           />
           {errors.title && (<span className='text-sm text-red-500'>Description is required</span>)}
 
-          <button className='text-white border rounded-sm'>
-            Insert Task
-          </button>
+          <input
+            className='text-white border rounded-sm'
+            type='submit'
+            value='Insert Task'
+          />
         </div>
       </form>
     </div>
