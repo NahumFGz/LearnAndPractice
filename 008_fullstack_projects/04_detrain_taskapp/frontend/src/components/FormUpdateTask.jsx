@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { useNavigate, useParams } from 'react-router-dom'
-import { getTask } from '../api/tasks'
+import { getTask, updateTask } from '../api/tasks'
 
 export function FormUpdateTask () {
   const { register, handleSubmit, formState: { errors }, setValue } = useForm()
@@ -9,6 +9,7 @@ export function FormUpdateTask () {
   const params = useParams()
 
   const handleUpdateTask = handleSubmit(async (data) => {
+    updateTask(params.id, data)
     console.log('Task updated')
     navigate('/tasks')
   })
@@ -24,6 +25,9 @@ export function FormUpdateTask () {
       console.log('Task fetched', response)
       setValue('title', response.title)
       setValue('description', response.description)
+      setValue('completed', response.completed)
+      setValue('created', response.created_at)
+      setValue('updated', response.updated_at)
     }
 
     fetchTask()
@@ -46,6 +50,23 @@ export function FormUpdateTask () {
             {...register('description', { required: true })}
           />
           {errors.title && (<span className='text-sm text-red-500'>Description is required</span>)}
+
+          <input
+            type='checkbox'
+            {...register('completed')}
+          />
+
+          <input
+            type='text'
+            readOnly
+            {...register('created')}
+          />
+
+          <input
+            type='text'
+            readOnly
+            {...register('updated')}
+          />
 
           <button
             className='text-white border rounded-sm'

@@ -24,3 +24,16 @@ export const createTask = async (task) => {
   const data = await response.json()
   return data
 }
+
+export const updateTask = async (id, task) => {
+  const response = await fetch(`${BASE_URL}${id}/`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(task)
+  })
+
+  const data = await response.json()
+  return data
+}
