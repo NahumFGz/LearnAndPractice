@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { useNavigate, useParams } from 'react-router-dom'
-import { getTask, updateTask } from '../api/tasks'
+import { deleteTask, getTask, updateTask } from '../api/tasks'
 
 export function FormUpdateTask () {
   const { register, handleSubmit, formState: { errors }, setValue } = useForm()
@@ -9,12 +9,16 @@ export function FormUpdateTask () {
   const params = useParams()
 
   const handleUpdateTask = handleSubmit(async (data) => {
-    updateTask(params.id, data)
+    await updateTask(params.id, data)
     console.log('Task updated')
     navigate('/tasks')
   })
 
   const handleDeleteTask = handleSubmit(async (data) => {
+    const confirm = window.confirm('Are you sure you want to delete this task?')
+    if (!confirm) return
+
+    await deleteTask(params.id)
     console.log('Task deleted')
     navigate('/tasks')
   })

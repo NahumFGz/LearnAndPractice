@@ -37,3 +37,19 @@ export const updateTask = async (id, task) => {
   const data = await response.json()
   return data
 }
+
+export const deleteTask = async (id) => {
+  const response = await fetch(`${BASE_URL}${id}/`, {
+    method: 'DELETE'
+  })
+
+  // Verifica si la respuesta tiene contenido antes de llamar a .json()
+  if (response.ok && response.status !== 204) {
+    const data = await response.json()
+    return data
+  } else if (response.ok) {
+    return { message: 'Task deleted successfully' }
+  } else {
+    throw new Error('Failed to delete the task')
+  }
+}
