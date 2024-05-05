@@ -37,7 +37,7 @@ export function Header () {
   }
 
   return (
-    <header className='flex flex-row items-center justify-between'>
+    <header className='flex flex-row items-center justify-between m-2'>
       <Link to='/tasks'>
         <h1
           className='text-2xl font-bold text-white p-4'
