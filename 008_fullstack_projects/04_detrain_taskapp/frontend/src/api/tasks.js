@@ -67,3 +67,20 @@ export const insertDummyData = async (taks) => {
   const data = await response.json()
   return data
 }
+
+// Eliminar todas las tareas en la ruta /delete-all/
+export const deleteAllTasks = async () => {
+  const response = await fetch(BASE_URL + 'delete-all/', {
+    method: 'DELETE'
+  })
+
+  // Verifica si la respuesta tiene contenido antes de llamar a .json()
+  if (response.ok && response.status !== 204) {
+    const data = await response.json()
+    return data
+  } else if (response.ok) {
+    return { message: 'All tasks deleted successfully' }
+  } else {
+    throw new Error('Failed to delete all tasks')
+  }
+}

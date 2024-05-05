@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom'
-import { insertDummyData } from '../api/tasks'
+import { deleteAllTasks, insertDummyData } from '../api/tasks'
 
 const dummy = [
   {
@@ -32,6 +32,10 @@ export function Header () {
     await insertDummyData(dummy)
   }
 
+  const handleDeleteAll = async () => {
+    await deleteAllTasks()
+  }
+
   return (
     <header className='flex flex-row items-center justify-between'>
       <Link to='/tasks'>
@@ -50,7 +54,10 @@ export function Header () {
                     Insert Task
                   </button>
                 </Link>
-                <button className='border white rounded-sm m-2 p-1 text-white'>
+                <button
+                  className='border white rounded-sm m-2 p-1 text-white'
+                  onClick={handleDeleteAll}
+                >
                   Delete All
                 </button>
                 <button
