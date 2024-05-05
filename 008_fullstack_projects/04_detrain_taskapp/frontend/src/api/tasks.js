@@ -53,3 +53,17 @@ export const deleteTask = async (id) => {
     throw new Error('Failed to delete the task')
   }
 }
+
+// Insertar Dummy Data en la ruta /bulk-create/
+export const insertDummyData = async (taks) => {
+  const response = await fetch(BASE_URL + 'bulk-create/', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(taks)
+  })
+
+  const data = await response.json()
+  return data
+}

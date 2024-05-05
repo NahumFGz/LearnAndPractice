@@ -1,8 +1,36 @@
 import { Link, useLocation } from 'react-router-dom'
+import { insertDummyData } from '../api/tasks'
+
+const dummy = [
+  {
+    title: 'Task 1',
+    description: 'Description 1',
+    completed: false
+  },
+  {
+    title: 'Task 2',
+    description: 'Description 2',
+    completed: true
+  },
+  {
+    title: 'Task 3',
+    description: 'Description 3',
+    completed: false
+  },
+  {
+    title: 'Task 4',
+    description: 'Description 4',
+    completed: false
+  }
+]
 
 export function Header () {
   const location = useLocation()
   const isInTasksPage = location.pathname === '/tasks'
+
+  const handleInsertSample = async () => {
+    await insertDummyData(dummy)
+  }
 
   return (
     <header className='flex flex-row items-center justify-between'>
@@ -25,7 +53,10 @@ export function Header () {
                 <button className='border white rounded-sm m-2 p-1 text-white'>
                   Delete All
                 </button>
-                <button className='border white rounded-sm m-2 p-1 text-white'>
+                <button
+                  className='border white rounded-sm m-2 p-1 text-white'
+                  onClick={handleInsertSample}
+                >
                   Insert Sample
                 </button>
               </div>
