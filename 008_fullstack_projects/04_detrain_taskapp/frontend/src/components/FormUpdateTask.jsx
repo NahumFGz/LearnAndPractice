@@ -9,12 +9,13 @@ export function FormUpdateTask () {
   const params = useParams()
 
   const handleUpdateTask = handleSubmit(async (data) => {
-    await updateTask(params.id, data)
-    console.log('Task updated')
+    const newData = { title: data.title, description: data.description, completed: data.completed }
+    await updateTask(params.id, newData)
+    console.log('Task updated', newData)
     navigate('/tasks')
   })
 
-  const handleDeleteTask = handleSubmit(async (data) => {
+  const handleDeleteTask = handleSubmit(async () => {
     const confirm = window.confirm('Are you sure you want to delete this task?')
     if (!confirm) return
 
