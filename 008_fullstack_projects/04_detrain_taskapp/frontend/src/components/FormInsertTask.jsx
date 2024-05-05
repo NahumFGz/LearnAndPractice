@@ -17,10 +17,11 @@ export function FormInsertTask () {
   })
 
   return (
-    <div className='border border-white p-4 m-4 w-[500px] h-[200px] flex flex-col justify-center'>
+    <div className='border rounded-lg border-white p-4 m-4 w-[500px] h-[300px] flex flex-col justify-center'>
       <form onSubmit={handleFormSubmit}>
-        <div className='flex flex-col gap-2'>
+        <div className='flex flex-col justify-center items-center gap-2'>
           <input
+            className='border rounded-md p-2 w-[350px]'
             type='text'
             placeholder='Title'
             {...register('title', { required: true })}
@@ -28,6 +29,7 @@ export function FormInsertTask () {
           {errors.title && (<span className='text-sm text-red-500'>Title is required</span>)}
 
           <textarea
+            className='border rounded-md p-2 w-[350px]'
             type='text'
             placeholder='Description'
             {...register('description', { required: true })}
@@ -35,7 +37,7 @@ export function FormInsertTask () {
           {errors.title && (<span className='text-sm text-red-500'>Description is required</span>)}
 
           <input
-            className='text-white border rounded-sm'
+            className='w-36 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded'
             type='submit'
             value='Insert Task'
           />
