@@ -2,17 +2,20 @@ import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { useNavigate, useParams } from 'react-router-dom'
 import { deleteTask, getTask, updateTask } from '../api/tasks'
+import { useTasksContext } from '../context/task'
 
 export function FormUpdateTask () {
   const { register, handleSubmit, formState: { errors }, setValue } = useForm()
   const navigate = useNavigate()
   const params = useParams()
+  const { refreshTasks } = useTasksContext()
 
   const handleUpdateTask = handleSubmit(async (data) => {
     const newData = { title: data.title, description: data.description, completed: data.completed }
     await updateTask(params.id, newData)
     console.log('Task updated', newData)
     navigate('/tasks')
+    refreshTasks()
   })
 
   const handleDeleteTask = handleSubmit(async () => {
@@ -22,6 +25,7 @@ export function FormUpdateTask () {
     await deleteTask(params.id)
     console.log('Task deleted')
     navigate('/tasks')
+    refreshTasks()
   })
 
   useEffect(() => {

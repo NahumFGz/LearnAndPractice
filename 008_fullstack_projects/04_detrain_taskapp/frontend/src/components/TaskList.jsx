@@ -1,8 +1,9 @@
-import { useGetTasks } from '../hooks/useGetTasks'
+import { useContext } from 'react'
 import { TaskCard } from './TaskCard'
+import { TaskContext } from '../context/task'
 
 export function TaskList () {
-  const { tasks } = useGetTasks()
+  const { tasks } = useContext(TaskContext)
 
   return (
     <div className='text-white'>

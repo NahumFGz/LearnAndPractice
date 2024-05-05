@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from 'react'
+import { createContext, useContext, useEffect, useState } from 'react'
 import { getAllTasks } from '../api/tasks'
 
 // 1. Crear el contexto
@@ -29,4 +29,4 @@ export function TaskProvider ({ children }) {
 }
 
 // 3. Crear el hook
-// export const useTasks = () => useContext(TaskContext)
+export const useTasksContext = () => useContext(TaskContext)

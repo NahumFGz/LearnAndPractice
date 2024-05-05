@@ -1,5 +1,7 @@
 import { Link, useLocation } from 'react-router-dom'
 import { deleteAllTasks, insertDummyData } from '../api/tasks'
+import { useContext } from 'react'
+import { TaskContext } from '../context/task'
 
 const dummy = [
   {
@@ -27,13 +29,16 @@ const dummy = [
 export function Header () {
   const location = useLocation()
   const isInTasksPage = location.pathname === '/tasks'
+  const { refreshTasks } = useContext(TaskContext)
 
   const handleInsertSample = async () => {
     await insertDummyData(dummy)
+    refreshTasks()
   }
 
   const handleDeleteAll = async () => {
     await deleteAllTasks()
+    refreshTasks()
   }
 
   return (

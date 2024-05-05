@@ -1,15 +1,19 @@
 import { useForm } from 'react-hook-form'
 import { createTask } from '../api/tasks'
 import { useNavigate } from 'react-router-dom'
+import { useContext } from 'react'
+import { TaskContext } from '../context/task'
 
 export function FormInsertTask () {
   const { register, handleSubmit, formState: { errors } } = useForm()
   const navigate = useNavigate()
+  const { refreshTasks } = useContext(TaskContext)
 
   const handleFormSubmit = handleSubmit(async (data) => {
     await createTask(data)
     console.log('Task created')
     navigate('/tasks')
+    refreshTasks()
   })
 
   return (
