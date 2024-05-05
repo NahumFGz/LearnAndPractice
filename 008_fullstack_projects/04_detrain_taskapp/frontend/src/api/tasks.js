@@ -6,6 +6,12 @@ export const getAllTasks = async () => {
   return data
 }
 
+export const getTask = async (id) => {
+  const response = await fetch(`${BASE_URL}${id}/`)
+  const data = await response.json()
+  return data
+}
+
 export const createTask = async (task) => {
   const response = await fetch(BASE_URL, {
     method: 'POST',
