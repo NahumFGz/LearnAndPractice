@@ -12,8 +12,8 @@ export function FormInsertTask () {
   const handleFormSubmit = handleSubmit(async (data) => {
     await createTask(data)
     console.log('Task created')
-    navigate('/tasks')
     refreshTasks()
+    navigate('/tasks')
   })
 
   return (
