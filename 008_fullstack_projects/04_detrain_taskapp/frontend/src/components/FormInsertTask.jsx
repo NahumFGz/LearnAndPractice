@@ -1,10 +1,12 @@
 import { useForm } from 'react-hook-form'
+import { createTask } from '../api/tasks'
 
 export function FormInsertTask () {
   const { register, handleSubmit, formState: { errors } } = useForm()
 
-  const handleFormSubmit = handleSubmit((data) => {
-    console.log(data)
+  const handleFormSubmit = handleSubmit(async (data) => {
+    await createTask(data)
+    console.log('Task created')
   })
 
   return (
