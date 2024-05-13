@@ -26,3 +26,4 @@ __pycache__
 # Ignorar todos los .DS_Store
 .DS_Store
 .DS_Store/*
+.sqlite3
