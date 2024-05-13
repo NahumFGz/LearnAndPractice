@@ -1,0 +1,21 @@
+# Querys para buscar todos los libros
+{
+   books {
+     id
+    title
+    description
+    createdAt
+    updatedAt
+   } 
+}
+
+# Buscar por ID
+{
+  book(id:1) {
+    id
+    title
+    description
+    createdAt
+    updatedAt
+  }
+}
