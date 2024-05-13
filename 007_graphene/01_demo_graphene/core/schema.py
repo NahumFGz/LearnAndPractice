@@ -10,6 +10,19 @@ class BookType(DjangoObjectType):
         fields = ("id", "title", "description", "created_at", "updated_at")
 
 
+class CreateBookMutation(graphene.Mutation):
+    book = graphene.Field(BookType)
+
+    class Arguments:
+        title = graphene.String()
+        description = graphene.String()
+
+    def mutate(self, info, title, description):
+        book = Book(title=title, description=description)
+        book.save()
+        return CreateBookMutation(book=book)
+
+
 class Query(graphene.ObjectType):
     hello = graphene.String(default_value="Hi!")
     book = graphene.Field(BookType, id=graphene.ID())
@@ -19,7 +32,14 @@ class Query(graphene.ObjectType):
         return Book.objects.all()
 
     def resolve_book(self, info, id):
-        return Book.objects.get(pk=id)
+        try:
+            return Book.objects.get(pk=id)
+        except Book.DoesNotExist:
+            return None
 
 
-schema = graphene.Schema(query=Query)
+class Mutation(graphene.ObjectType):
+    create_book = CreateBookMutation.Field()
+
+
+schema = graphene.Schema(query=Query, mutation=Mutation)
